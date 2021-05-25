@@ -37,26 +37,32 @@ class BarTab extends StatelessWidget {
           ),
           indicatorColor: Colors.transparent,
           tabs: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.article),
-                Text("Notes", style: TextStyle(fontSize: 18)),
-              ],
+            Expanded(
+              child: Row(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                 children: [
+                   Icon(Icons.article),
+                   Text("Notes", style: TextStyle(fontSize: 16)),
+                 ],
+               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.star),
-                Text("Whitelist", style: TextStyle(fontSize: 17)),
-              ],
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(Icons.star),
+                  Text("Whitelist", style: TextStyle(fontSize: 19)),
+                ],
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(Icons.done),
-                Text("To-do", style: TextStyle(fontSize: 18)),
-              ],
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.done),
+                  Text("To-do", style: TextStyle(fontSize: 16)),
+                ],
+              ),
             ),
           ],
         ),
