@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sevnotes2/App/EditNote/edit_note.dart';
 import 'package:sevnotes2/models/note.dart';
-import 'package:sevnotes2/screens/edit_note.dart';
 
 class NoteCard extends StatelessWidget {
 

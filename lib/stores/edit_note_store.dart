@@ -1,39 +1,38 @@
- import 'package:mobx/mobx.dart';
+import 'package:mobx/mobx.dart';
 import 'package:sevnotes2/models/note.dart';
 
- part 'edit_note_store.g.dart';
- //flutter packages pub run build_runner watch
- class EditNoteStore = _EditNoteStore with _$EditNoteStore;
+part 'edit_note_store.g.dart';
 
- abstract class _EditNoteStore with Store {
+//flutter packages pub run build_runner watch
+class EditNoteStore = _EditNoteStore with _$EditNoteStore;
 
-   @observable
-   String title;
+abstract class _EditNoteStore with Store {
+  @observable
+  String title;
 
-   @observable
-   String body;
+  @observable
+  String body;
 
-   @observable
-   bool isFavorite;
+  @observable
+  bool isFavorite;
 
-   @observable
-   String creationDate;
+  @observable
+  String creationDate;
 
-   @action
-   void setData(Note note) {
-     title = note.title;
-     body = note.body;
-     isFavorite = note.isFavorite;
-     creationDate = note.creationDate;
-   }
+  @action
+  void setData(Note note) {
+    title = note.title;
+    body = note.body;
+    isFavorite = note.isFavorite;
+    creationDate = note.creationDate;
+  }
 
-   @action
-   void setTitle(String value) => title = value;
+  @action
+  void setTitle(String value) => title = value;
 
-   @action
-   void setBody(String value) => body = value;
+  @action
+  void setBody(String value) => body = value;
 
-   @action
-   void setFavorite() => isFavorite = !isFavorite;
-
- }
+  @action
+  void setFavorite() => isFavorite = !isFavorite;
+}

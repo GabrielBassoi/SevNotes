@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
-import 'package:sevnotes2/screens/settings_screen.dart';
+import 'package:sevnotes2/App/Settings/settings_screen.dart';
 
 class ToolBar extends StatefulWidget {
   @override

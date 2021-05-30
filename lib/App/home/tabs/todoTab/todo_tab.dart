@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sevnotes2/stores/todo_store.dart';
-import 'package:sevnotes2/widgets/home/todo/add_todo.dart';
-import 'package:sevnotes2/widgets/home/todo/todo_row.dart';
+
+import 'add_todo.dart';
+import 'todo_row.dart';
 
 class TodoTab extends StatelessWidget {
 

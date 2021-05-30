@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sevnotes2/models/todo.dart';
-import 'package:sevnotes2/screens/home_note_screen.dart';
 import 'package:sevnotes2/stores/home_store.dart';
 import 'package:sevnotes2/stores/todo_store.dart';
 
+import 'App/home/home_note_screen.dart';
 import 'models/note.dart';
 
 void main() {

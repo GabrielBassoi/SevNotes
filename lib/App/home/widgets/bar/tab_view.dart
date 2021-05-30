@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sevnotes2/tabs/notes_tab.dart';
-import 'package:sevnotes2/tabs/todo_tab.dart';
-import 'package:sevnotes2/tabs/whitelist_tab.dart';
+import 'package:sevnotes2/App/home/tabs/notesTab/notes_tab.dart';
+import 'package:sevnotes2/App/home/tabs/todoTab/todo_tab.dart';
+import 'package:sevnotes2/App/home/tabs/whiteListTab/whitelist_tab.dart';
 
 class TabView extends StatelessWidget {
 

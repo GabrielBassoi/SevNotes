@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:sevnotes2/App/home/widgets/note_card.dart';
 import 'package:sevnotes2/models/todo.dart';
 import 'package:sevnotes2/stores/home_store.dart';
-import 'package:sevnotes2/widgets/notes/note_card.dart';
 
 class WhitelistTab extends StatelessWidget {
 

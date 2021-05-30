@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sevnotes2/widgets/home/bar.dart';
-import 'package:sevnotes2/widgets/home/tab_view.dart';
-import 'package:sevnotes2/widgets/home/tool_bar.dart';
+
+import 'widgets/bar/bar.dart';
+import 'widgets/bar/tab_view.dart';
+import 'widgets/bar/tool_bar.dart';
 
 class HomeNoteScreen extends StatefulWidget {
   @override

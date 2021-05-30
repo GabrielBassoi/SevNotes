@@ -51,7 +51,7 @@ class BarTab extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Icon(Icons.star),
-                  Text("Whitelist", style: TextStyle(fontSize: 19)),
+                  Text("Whitelist", style: TextStyle(fontSize: 16)),
                 ],
               ),
             ),
