@@ -4,30 +4,30 @@ import 'package:get_it/get_it.dart';
 import 'package:sevnotes2/App/home/widgets/note_card.dart';
 import 'package:sevnotes2/stores/home_store.dart';
 
-class NotesTab extends StatelessWidget {
+import '../empty_list.dart';
 
-  final HomeStore store = GetIt.I<HomeStore>();
+class NotesTab extends StatelessWidget {
+  NotesTab({Key key}) : super(key: key);
+
+  HomeStore store = GetIt.I<HomeStore>();
 
   @override
   Widget build(BuildContext context) {
-
-    SliverGridDelegateWithFixedCrossAxisCount gridDelegate = SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2);
-
-    return Container(
-      child: Observer(
-        builder: (_) {
-          return GridView.builder(
+    SliverGridDelegateWithFixedCrossAxisCount gridDelegate =
+        SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2);
+    return Observer(builder: (_) {
+      if (store.notesList.isEmpty) {
+        return EmptyList();
+      } else {
+        return GridView.builder(
             gridDelegate: gridDelegate,
             itemCount: store.notesList.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
                   margin: const EdgeInsets.all(13),
-                  child: NoteCard(store.notesList[index])
-              );
-            },
-          );
-        }
-      ),
-    );
+                  child: NoteCard(store.notesList[index]));
+            });
+      }
+    });
   }
 }

@@ -37,10 +37,10 @@ List<String> month = [
 void setupLocates() {
   GetIt.I.registerSingleton(HomeStore());
   GetIt.I.registerSingleton(TodoStore());
-  store.notesList.add(Note("Bom dia", "TTTTTTTTTTTTTTTTTTTT", false, "${month[(time.month)-1]} ${time.day}, ${time.year}"));
-  store.notesList.add(Note("Bom digddfgdfgda", "TTTTTTTTTdfgdgTTTTTTTTTdfgdfgdfTTTTTTTT", true, "${month[(time.month)-1]} ${time.day}, ${time.year}"));
-  store.notesList.add(Note("Bom ddfgdfgdgia", "TTTTTTTTTTTTTTTTTTTTTTytyergdgdfTTTT", false, "${month[(time.month)-1]} ${time.day}, ${time.year}"));
-  store.notesList.add(Note("Bdfgdfdfgdom dia", "TTTTTTTTTTTTTTTTTTTfgdgdfdfgdgTTTTTT", false, "${month[(time.month)-1]} ${time.day}, ${time.year}"));
+  //store.notesList.add(Note("Bom dia", "TTTTTTTTTTTTTTTTTTTT", false, "${month[(time.month)-1]} ${time.day}, ${time.year}"));
+  // store.notesList.add(Note("Bom digddfgdfgda", "TTTTTTTTTdfgdgTTTTTTTTTdfgdfgdfTTTTTTTT", true, "${month[(time.month)-1]} ${time.day}, ${time.year}"));
+  // store.notesList.add(Note("Bom ddfgdfgdgia", "TTTTTTTTTTTTTTTTTTTTTTytyergdgdfTTTT", false, "${month[(time.month)-1]} ${time.day}, ${time.year}"));
+  // store.notesList.add(Note("Bdfgdfdfgdom dia", "TTTTTTTTTTTTTTTTTTTfgdgdfdfgdgTTTTTT", false, "${month[(time.month)-1]} ${time.day}, ${time.year}"));
 
   todoStore.todoList.add(todo("AMEM", false));
   todoStore.todoList.add(todo("AMEM AHSBFASBFJASFBJAS", true));

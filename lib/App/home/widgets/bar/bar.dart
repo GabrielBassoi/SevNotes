@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class BarTab extends StatelessWidget {
-
   final TabController tabController;
   BarTab(this.tabController);
 
@@ -27,10 +26,9 @@ class BarTab extends StatelessWidget {
           indicator: BoxDecoration(
             boxShadow: [
               BoxShadow(
-                offset: Offset(3, 3),
-                blurRadius: 10,
-                color: Color.fromRGBO(100, 100, 100, 50)
-              )
+                  offset: Offset(3, 3),
+                  blurRadius: 10,
+                  color: Color.fromRGBO(100, 100, 100, 50))
             ],
             color: Colors.grey[700],
             borderRadius: BorderRadius.circular(25),
@@ -39,12 +37,12 @@ class BarTab extends StatelessWidget {
           tabs: [
             Expanded(
               child: Row(
-                 mainAxisAlignment: MainAxisAlignment.center,
-                 children: [
-                   Icon(Icons.article),
-                   Text("Notes", style: TextStyle(fontSize: 16)),
-                 ],
-               ),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.article),
+                  Text("Notes", style: TextStyle(fontSize: 16)),
+                ],
+              ),
             ),
             Expanded(
               child: Row(
