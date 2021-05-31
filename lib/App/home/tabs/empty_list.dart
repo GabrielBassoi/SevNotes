@@ -1,8 +1,18 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EmptyList extends StatelessWidget {
-  const EmptyList({Key key}) : super(key: key);
+  final String title;
+  final String subTitle;
+  final IconData icons;
+
+  EmptyList({
+    @required this.title,
+    @required this.subTitle,
+    @required this.icons,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -10,13 +20,14 @@ class EmptyList extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.help_outline, size: 100),
+          Icon(icons, size: 100),
           Wrap(
             children: [
               Text(
-                "Where is my notes???",
-                style: GoogleFonts.roboto(fontSize: 20, fontWeight: FontWeight.w800),
+                title,
                 textAlign: TextAlign.center,
+                style: GoogleFonts.roboto(
+                    fontSize: 20, fontWeight: FontWeight.w800),
               )
             ],
           ),
@@ -26,7 +37,7 @@ class EmptyList extends StatelessWidget {
           Wrap(
             children: [
               Text(
-                "Click on the add button to add your first note!",
+                subTitle,
                 style: GoogleFonts.roboto(),
                 textAlign: TextAlign.center,
               ),
