@@ -6,7 +6,6 @@ import 'package:sevnotes2/stores/home_store.dart';
 import 'package:sevnotes2/stores/todo_store.dart';
 
 import 'App/home/home_note_screen.dart';
-import 'models/note.dart';
 
 void main() {
   setupLocates();

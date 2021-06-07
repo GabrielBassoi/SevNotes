@@ -9,8 +9,8 @@ class HomeNoteScreen extends StatefulWidget {
   _HomeNoteScreenState createState() => _HomeNoteScreenState();
 }
 
-class _HomeNoteScreenState extends State<HomeNoteScreen> with SingleTickerProviderStateMixin{
-
+class _HomeNoteScreenState extends State<HomeNoteScreen>
+    with SingleTickerProviderStateMixin {
   TabController tabController;
 
   @override
@@ -32,11 +32,14 @@ class _HomeNoteScreenState extends State<HomeNoteScreen> with SingleTickerProvid
       child: Column(
         children: [
           Container(
-            padding: const EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
+            padding:
+                const EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
             child: Column(
               children: [
                 ToolBar(),
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 BarTab(tabController),
               ],
             ),
@@ -46,9 +49,12 @@ class _HomeNoteScreenState extends State<HomeNoteScreen> with SingleTickerProvid
               child: Scaffold(
                 body: TabView(tabController),
                 floatingActionButton: FloatingActionButton(
-                  onPressed: (){},
+                  onPressed: () {},
                   backgroundColor: Colors.grey,
-                  child: Icon(Icons.add, color: Colors.black,),
+                  child: Icon(
+                    Icons.add,
+                    color: Colors.black,
+                  ),
                 ),
               ),
             ),
