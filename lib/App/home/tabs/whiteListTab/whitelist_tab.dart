@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sevnotes2/App/home/tabs/empty_list.dart';
 import 'package:sevnotes2/App/home/widgets/note_card.dart';
-import 'package:sevnotes2/models/todo.dart';
 import 'package:sevnotes2/stores/home_store.dart';
 
 class WhitelistTab extends StatelessWidget {
@@ -23,11 +22,14 @@ class WhitelistTab extends StatelessWidget {
 
     return Observer(builder: (_) {
       if (i == 0) {
-        return EmptyList(
-            title: "Where is my favorites notes????",
-            subTitle:
-                "Go to some note and click on the Star to add your first favorite note",
-            icons: Icons.favorite_border);
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: EmptyList(
+              title: "Where is my favorites notes????",
+              subTitle: "Go to some note and click on the star to add your first favorite note",
+              icons: Icons.favorite_border
+          )
+        );
       }
       return Container(
         child: GridView.builder(

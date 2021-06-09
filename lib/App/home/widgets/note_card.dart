@@ -11,7 +11,7 @@ class NoteCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        Navigator.of(context).push(MaterialPageRoute(builder: (_) => EditNote(note)));
+        Navigator.of(context).push(MaterialPageRoute(builder: (_) => EditNote(note: note,)));
       },
       child: Container(
         padding: const EdgeInsets.all(10),

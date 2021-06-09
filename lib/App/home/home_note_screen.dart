@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sevnotes2/App/EditNote/edit_note.dart';
 
 import 'widgets/bar/bar.dart';
 import 'widgets/bar/tab_view.dart';
@@ -49,7 +50,10 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
               child: Scaffold(
                 body: TabView(tabController),
                 floatingActionButton: FloatingActionButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context)
+                        .push(MaterialPageRoute(builder: (_) => EditNote()));
+                  },
                   backgroundColor: Colors.grey,
                   child: Icon(
                     Icons.add,

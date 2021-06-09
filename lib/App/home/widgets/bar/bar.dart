@@ -40,7 +40,7 @@ class BarTab extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.article),
-                  Text("Notes", style: TextStyle(fontSize: 16)),
+                  Text("Notes", style: TextStyle(fontSize: 15)),
                 ],
               ),
             ),
@@ -49,7 +49,7 @@ class BarTab extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Icon(Icons.star),
-                  Text("Whitelist", style: TextStyle(fontSize: 16)),
+                  Text("Whitelist", style: TextStyle(fontSize: 15)),
                 ],
               ),
             ),
@@ -58,7 +58,7 @@ class BarTab extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.done),
-                  Text("To-do", style: TextStyle(fontSize: 16)),
+                  Text("To-do", style: TextStyle(fontSize: 15)),
                 ],
               ),
             ),
