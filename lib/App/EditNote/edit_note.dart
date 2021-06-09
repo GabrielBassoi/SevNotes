@@ -10,7 +10,7 @@ class EditNote extends StatelessWidget {
   EditNote({this.note});
 
   final EditNoteStore store = EditNoteStore();
-  
+
   @override
   Widget build(BuildContext context) {
     if (note == null) {
@@ -20,7 +20,7 @@ class EditNote extends StatelessWidget {
     }
     return Container(
       child: Scaffold(
-        appBar: EditNoteAppBarWidget(store: store),
+        appBar: EditNoteAppBarWidget(store, context),
         body: Container(
           padding: const EdgeInsets.all(15),
           child: EditNoteBodyWidget(store: store),

@@ -12,7 +12,6 @@ class _ToolBarState extends State<ToolBar> {
 
   DateTime time = DateTime.now();
 
-
   @override
   void initState() {
     super.initState();

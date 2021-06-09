@@ -34,37 +34,25 @@ class BarTab extends StatelessWidget {
             borderRadius: BorderRadius.circular(25),
           ),
           indicatorColor: Colors.transparent,
+          indicatorPadding:
+              const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
           tabs: [
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.article),
-                  Text("Notes", style: TextStyle(fontSize: 15)),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Icon(Icons.star),
-                  Text("Whitelist", style: TextStyle(fontSize: 15)),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.done),
-                  Text("To-do", style: TextStyle(fontSize: 15)),
-                ],
-              ),
-            ),
+            tabb("Notes", Icons.article),
+            tabb("Whitelist", Icons.star),
+            tabb("To-do", Icons.done),
           ],
         ),
       ),
     );
   }
+}
+
+Widget tabb(String title, IconData icon) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Icon(icon),
+      Text(title, style: TextStyle(fontSize: 15)),
+    ],
+  );
 }
