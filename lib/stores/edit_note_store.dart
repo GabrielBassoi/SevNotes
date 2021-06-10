@@ -1,5 +1,8 @@
+import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
+import 'package:sevnotes2/App/EditNote/widgets/date.dart';
 import 'package:sevnotes2/models/note.dart';
+import 'package:sevnotes2/stores/home_store.dart';
 
 part 'edit_note_store.g.dart';
 
@@ -7,6 +10,11 @@ part 'edit_note_store.g.dart';
 class EditNoteStore = _EditNoteStore with _$EditNoteStore;
 
 abstract class _EditNoteStore with Store {
+  final HomeStore store = GetIt.I<HomeStore>();
+
+  @observable
+  int index;
+
   @observable
   String title;
 
@@ -20,6 +28,18 @@ abstract class _EditNoteStore with Store {
   String creationDate;
 
   @action
+  void setTitle(String value) => title = value;
+
+  @action
+  void setBody(String value) => body = value;
+
+  @action
+  void setFavorite() => isFavorite = !isFavorite;
+
+  @action
+  void setIndex(int value) => index = value;
+
+  @action
   void setData(Note note) {
     title = note.title;
     body = note.body;
@@ -28,11 +48,15 @@ abstract class _EditNoteStore with Store {
   }
 
   @action
-  void setTitle(String value) => title = value;
+  void addData() {
+    store.notesList.add(Note(title, body, isFavorite, creationDate));
+  }
 
   @action
-  void setBody(String value) => body = value;
-
-  @action
-  void setFavorite() => isFavorite = !isFavorite;
+  void saveData() {
+    store.notesList[index].body = this.body;
+    store.notesList[index].creationDate = date();
+    store.notesList[index].title = this.title;
+    store.notesList[index].isFavorite = this.isFavorite;
+  }
 }

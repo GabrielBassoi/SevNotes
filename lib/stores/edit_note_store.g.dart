@@ -9,6 +9,21 @@ part of 'edit_note_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$EditNoteStore on _EditNoteStore, Store {
+  final _$indexAtom = Atom(name: '_EditNoteStore.index');
+
+  @override
+  int get index {
+    _$indexAtom.reportRead();
+    return super.index;
+  }
+
+  @override
+  set index(int value) {
+    _$indexAtom.reportWrite(value, super.index, () {
+      super.index = value;
+    });
+  }
+
   final _$titleAtom = Atom(name: '_EditNoteStore.title');
 
   @override
@@ -73,17 +88,6 @@ mixin _$EditNoteStore on _EditNoteStore, Store {
       ActionController(name: '_EditNoteStore');
 
   @override
-  void setData(Note note) {
-    final _$actionInfo = _$_EditNoteStoreActionController.startAction(
-        name: '_EditNoteStore.setData');
-    try {
-      return super.setData(note);
-    } finally {
-      _$_EditNoteStoreActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   void setTitle(String value) {
     final _$actionInfo = _$_EditNoteStoreActionController.startAction(
         name: '_EditNoteStore.setTitle');
@@ -117,8 +121,53 @@ mixin _$EditNoteStore on _EditNoteStore, Store {
   }
 
   @override
+  void setIndex(int value) {
+    final _$actionInfo = _$_EditNoteStoreActionController.startAction(
+        name: '_EditNoteStore.setIndex');
+    try {
+      return super.setIndex(value);
+    } finally {
+      _$_EditNoteStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setData(Note note) {
+    final _$actionInfo = _$_EditNoteStoreActionController.startAction(
+        name: '_EditNoteStore.setData');
+    try {
+      return super.setData(note);
+    } finally {
+      _$_EditNoteStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addData() {
+    final _$actionInfo = _$_EditNoteStoreActionController.startAction(
+        name: '_EditNoteStore.addData');
+    try {
+      return super.addData();
+    } finally {
+      _$_EditNoteStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void saveData() {
+    final _$actionInfo = _$_EditNoteStoreActionController.startAction(
+        name: '_EditNoteStore.saveData');
+    try {
+      return super.saveData();
+    } finally {
+      _$_EditNoteStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
+index: ${index},
 title: ${title},
 body: ${body},
 isFavorite: ${isFavorite},

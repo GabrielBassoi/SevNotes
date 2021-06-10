@@ -7,16 +7,18 @@ import 'package:sevnotes2/stores/edit_note_store.dart';
 
 class EditNote extends StatelessWidget {
   final Note note;
-  EditNote({this.note});
+  final int index;
+  EditNote({this.note, this.index});
 
   final EditNoteStore store = EditNoteStore();
 
   @override
   Widget build(BuildContext context) {
-    if (note == null) {
+    if (index == null) {
       store.setData(Note("", "", false, date()));
     } else {
       store.setData(note);
+      store.setIndex(index);
     }
     return Container(
       child: Scaffold(

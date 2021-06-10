@@ -9,7 +9,7 @@ import '../empty_list.dart';
 class NotesTab extends StatelessWidget {
   NotesTab({Key key}) : super(key: key);
 
-  HomeStore store = GetIt.I<HomeStore>();
+  final HomeStore store = GetIt.I<HomeStore>();
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class NotesTab extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return Container(
                   margin: const EdgeInsets.all(13),
-                  child: NoteCard(store.notesList[index]));
+                  child: NoteCard(store.notesList[index], index));
             });
       }
     });

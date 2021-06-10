@@ -26,7 +26,14 @@ class EditNoteAppBarWidget extends PreferredSize {
             leading: IconButton(
               padding: EdgeInsets.zero,
               constraints: BoxConstraints(),
-              onPressed: Navigator.of(context).pop,
+              onPressed: () {
+                if (store.index == null) {
+                  store.addData();
+                } else {
+                  store.saveData();
+                }
+                Navigator.of(context).pop();
+              },
               splashRadius: 20,
               iconSize: 25,
               icon: Icon(Icons.keyboard_arrow_left),
