@@ -165,6 +165,17 @@ mixin _$EditNoteStore on _EditNoteStore, Store {
   }
 
   @override
+  void deleteData() {
+    final _$actionInfo = _$_EditNoteStoreActionController.startAction(
+        name: '_EditNoteStore.deleteData');
+    try {
+      return super.deleteData();
+    } finally {
+      _$_EditNoteStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 index: ${index},

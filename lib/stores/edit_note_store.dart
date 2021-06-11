@@ -59,4 +59,9 @@ abstract class _EditNoteStore with Store {
     store.notesList[index].title = this.title;
     store.notesList[index].isFavorite = this.isFavorite;
   }
+
+  @action
+  void deleteData() {
+    store.notesList.removeAt(index);
+  }
 }

@@ -56,7 +56,12 @@ class EditNoteAppBarWidget extends PreferredSize {
                 padding: EdgeInsets.zero,
                 constraints: BoxConstraints(),
                 splashRadius: 20,
-                onPressed: () {},
+                onPressed: store.index != null
+                    ? () {
+                        store.deleteData();
+                        Navigator.of(context).pop();
+                      }
+                    : null,
                 iconSize: 25,
                 icon: Icon(Icons.delete),
               ),
