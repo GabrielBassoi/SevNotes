@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
@@ -18,6 +20,10 @@ void setupLocates() {
   GetIt.I.registerSingleton(HomeStore());
   GetIt.I.registerSingleton(TodoStore());
 
+  store.readData().then((data) => () {
+        store.notesList = json.decode(data);
+      });
+
   todoStore.todoList.add(todo("AMEM", false));
   todoStore.todoList.add(todo("AMEM AHSBFASBFJASFBJAS", true));
   todoStore.todoList.add(todo("AMEM sdjnf sdfku", false));
@@ -33,10 +39,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'SevNotes 2',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.grey,
-          fontFamily: "Roboto"
-      ),
+      theme: ThemeData(primaryColor: Colors.grey, fontFamily: "Roboto"),
       home: HomeNoteScreen(),
     );
   }
