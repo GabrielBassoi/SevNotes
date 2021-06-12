@@ -43,7 +43,7 @@ mixin _$TodoRowStore on _TodoRowStore, Store {
       ActionController(name: '_TodoRowStore');
 
   @override
-  void setData(todo todo) {
+  void setData(Todo todo) {
     final _$actionInfo = _$_TodoRowStoreActionController.startAction(
         name: '_TodoRowStore.setData');
     try {

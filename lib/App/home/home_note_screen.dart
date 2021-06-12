@@ -32,7 +32,7 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
       color: Colors.white,
       child: Column(
         children: [
-          Container(
+          Padding(
             padding: const EdgeInsets.all(15),
             child: Column(
               children: [
@@ -42,20 +42,18 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
               ],
             ),
           ),
-          Container(
-            child: Expanded(
-              child: Scaffold(
-                body: TabView(tabController),
-                floatingActionButton: FloatingActionButton(
-                  backgroundColor: Colors.grey,
-                  onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (_) => EditNote()));
-                  },
-                  child: Icon(
-                    Icons.add,
-                    color: Colors.black,
-                  ),
+          Expanded(
+            child: Scaffold(
+              body: TabView(tabController),
+              floatingActionButton: FloatingActionButton(
+                backgroundColor: Colors.grey,
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (_) => EditNote()));
+                },
+                child: Icon(
+                  Icons.add,
+                  color: Colors.black,
                 ),
               ),
             ),

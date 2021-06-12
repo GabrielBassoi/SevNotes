@@ -14,7 +14,7 @@ abstract class _TodoRowStore with Store {
   String text;
 
   @action
-  void setData(todo todo) {
+  void setData(Todo todo) {
     text = todo.title;
     isCompleted = todo.checked;
   }

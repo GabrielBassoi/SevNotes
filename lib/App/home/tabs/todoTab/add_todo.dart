@@ -12,7 +12,7 @@ class AddTodo extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        store.todoList.add(todo("", false));
+        store.todoList.add(Todo("", false));
       },
       child: Container(
         padding: const EdgeInsets.only(top: 5, left: 9),

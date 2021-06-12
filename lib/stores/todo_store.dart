@@ -7,6 +7,6 @@ class TodoStore = _TodoStore with _$TodoStore;
 
 abstract class _TodoStore with Store {
 
-  ObservableList<todo> todoList = ObservableList<todo>();
+  ObservableList<Todo> todoList = ObservableList<Todo>();
 
 }

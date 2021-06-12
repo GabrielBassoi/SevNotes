@@ -1,6 +1,6 @@
-class todo {
+class Todo {
 
-  todo(this.title, this.checked);
+  Todo(this.title, this.checked);
 
   String title;
   bool checked;

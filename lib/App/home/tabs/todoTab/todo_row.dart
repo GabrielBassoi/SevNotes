@@ -7,7 +7,7 @@ import 'package:sevnotes2/stores/todo_row_store.dart';
 class TodoRow extends StatelessWidget {
   final TodoRowStore store = TodoRowStore();
   TodoRow(this.td);
-  final todo td;
+  final Todo td;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class TodoRow extends StatelessWidget {
           background: Container(
             color: Colors.red,
           ),
-          key: ValueKey(todo),
+          key: ValueKey(Todo),
           child: Container(
             height: 35,
             child: Row(

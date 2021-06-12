@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sevnotes2/data/data.dart';
 import 'package:sevnotes2/stores/edit_note_store.dart';
 import 'package:sevnotes2/stores/home_store.dart';
 
 class EditNoteAppBarWidget extends PreferredSize {
   final EditNoteStore store;
   final BuildContext context;
-
   EditNoteAppBarWidget(this.store, this.context)
       : super(
           preferredSize: Size.fromHeight(65),
@@ -28,14 +28,14 @@ class EditNoteAppBarWidget extends PreferredSize {
             leading: IconButton(
               padding: EdgeInsets.zero,
               constraints: BoxConstraints(),
-              onPressed: () async{
+              onPressed: () {
                 if (store.index == null) {
                   store.addData();
                 } else {
                   store.saveData();
                 }
                 HomeStore homeStore = GetIt.I<HomeStore>();
-                await homeStore.saveData();
+                Data().saveData(homeStore.notesList.toList());
                 Navigator.of(context).pop();
               },
               splashRadius: 20,

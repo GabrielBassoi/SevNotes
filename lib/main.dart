@@ -1,15 +1,16 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
-import 'package:sevnotes2/models/todo.dart';
+import 'package:mobx/mobx.dart';
 import 'package:sevnotes2/stores/home_store.dart';
 import 'package:sevnotes2/stores/todo_store.dart';
 
 import 'App/home/home_note_screen.dart';
+import 'data/data.dart';
 
-void main() {
+final HomeStore store = GetIt.I<HomeStore>();
+final TodoStore todoStore = GetIt.I<TodoStore>();
+void main() async {
   setupLocates();
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIOverlays([]);
@@ -19,21 +20,26 @@ void main() {
 void setupLocates() {
   GetIt.I.registerSingleton(HomeStore());
   GetIt.I.registerSingleton(TodoStore());
-
-  store.readData().then((data) => () {
-        store.notesList = json.decode(data);
-      });
-
-  todoStore.todoList.add(todo("AMEM", false));
-  todoStore.todoList.add(todo("AMEM AHSBFASBFJASFBJAS", true));
-  todoStore.todoList.add(todo("AMEM sdjnf sdfku", false));
-  todoStore.todoList.add(todo("AMEM asdasdasdas", true));
 }
 
-final HomeStore store = GetIt.I<HomeStore>();
-final TodoStore todoStore = GetIt.I<TodoStore>();
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
 
-class MyApp extends StatelessWidget {
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    Data().readData().then((list) {
+      if (list != null) {
+        setState(() {
+          list.map((note) => store.notesList.add(note));
+        });
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
