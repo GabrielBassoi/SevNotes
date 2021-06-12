@@ -34,7 +34,7 @@ class _MyAppState extends State<MyApp> {
     Data().readData().then((list) {
       if (list != null) {
         setState(() {
-          list.map((note) => store.notesList.add(note));
+          list.map((note) => store.notesList.add(note)).toList();
         });
       }
     });

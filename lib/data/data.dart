@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:mobx/mobx.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sevnotes2/models/note.dart';
 
