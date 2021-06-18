@@ -17,7 +17,11 @@ class NotesTab extends StatelessWidget {
         SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2);
     return Observer(builder: (_) {
       if (store.notesList.isEmpty) {
-        return EmptyList(title: "Where is my notes???", subTitle: "Click on the add button to add your first note!", icons: Icons.help_outline,);
+        return EmptyList(
+          title: "Where is my notes???",
+          subTitle: "Click on the add button to add your first note!",
+          icons: Icons.help_outline,
+        );
       } else {
         return GridView.builder(
             gridDelegate: gridDelegate,

@@ -33,14 +33,13 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(15),
-            child: Column(
-              children: [
-                ToolBar(),
-                SizedBox(height: 20),
-                BarTab(tabController)
-              ],
-            ),
+            padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+            child: ToolBar(),
+          ),
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 15, left: 15, right: 15),
+            child: BarTab(tabController),
           ),
           Expanded(
             child: Scaffold(
@@ -51,10 +50,7 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (_) => EditNote()));
                 },
-                child: Icon(
-                  Icons.add,
-                  color: Colors.black,
-                ),
+                child: Icon(Icons.add, color: Colors.black),
               ),
             ),
           ),

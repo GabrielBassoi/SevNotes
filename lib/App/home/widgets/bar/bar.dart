@@ -23,19 +23,18 @@ class BarTab extends StatelessWidget {
         ),
         child: TabBar(
           controller: tabController,
+          indicatorColor: Colors.transparent,
+          indicatorPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
           indicator: BoxDecoration(
+            color: Colors.grey[700],
+            borderRadius: BorderRadius.circular(25),
             boxShadow: [
               BoxShadow(
                   offset: Offset(3, 3),
                   blurRadius: 10,
                   color: Color.fromRGBO(100, 100, 100, 50))
             ],
-            color: Colors.grey[700],
-            borderRadius: BorderRadius.circular(25),
           ),
-          indicatorColor: Colors.transparent,
-          indicatorPadding:
-              const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
           tabs: [
             tabb("Notes", Icons.article),
             tabb("Whitelist", Icons.star),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sevnotes2/App/EditNote/edit_note.dart';
 import 'package:sevnotes2/models/note.dart';
 
@@ -12,63 +13,37 @@ class NoteCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (_) => EditNote(
-                  note: note,
-                  index: index,
-                )));
+            builder: (_) => EditNote(note: note, index: index)));
       },
       child: Container(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
-            color: Colors.grey,
-            borderRadius: BorderRadius.circular(25),
-            boxShadow: [
-              BoxShadow(
-                  offset: Offset(3, 3),
-                  blurRadius: 10,
-                  color: Color.fromRGBO(100, 100, 100, 50))
-            ]),
-        child: Card(
-          color: Colors.transparent,
-          elevation: 0,
+          color: Colors.grey,
+          borderRadius: BorderRadius.circular(25),
+        ),
+        child: Expanded(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Flexible(
-                      child: Text(
-                    note.title,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontFamily: "Roboto",
-                    ),
-                  )),
-                  Icon(
-                    Icons.ac_unit,
-                    size: 20,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 12,
-              ),
               Text(
-                note.body,
-                style: TextStyle(fontSize: 10, fontFamily: "Roboto"),
-                maxLines: 6,
+                note.title,
+                maxLines: 1,
+                style: GoogleFonts.roboto(
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
+              SizedBox(height: 5),
               Expanded(
-                  child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Text(
-                        "${note.creationDate}",
-                        style: TextStyle(
-                            fontSize: 9,
-                            color: Colors.black45,
-                            fontFamily: "Roboto"),
-                      ))),
+                  child: Text(
+                note.body,
+                maxLines: 6,
+                style: GoogleFonts.roboto(fontSize: 12),
+              )),
+              Text(
+                note.creationDate,
+                style: GoogleFonts.roboto(fontSize: 11),
+              )
             ],
           ),
         ),

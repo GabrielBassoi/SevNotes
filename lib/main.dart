@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mobx/mobx.dart';
 import 'package:sevnotes2/stores/home_store.dart';
 import 'package:sevnotes2/stores/todo_store.dart';
 
@@ -33,9 +32,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     Data().readData().then((list) {
       if (list != null) {
-        setState(() {
-          list.map((note) => store.notesList.add(note)).toList();
-        });
+        list.map((note) => store.notesList.add(note)).toList();
       }
     });
   }

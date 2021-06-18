@@ -7,38 +7,35 @@ import 'add_todo.dart';
 import 'todo_row.dart';
 
 class TodoTab extends StatelessWidget {
-
   final TodoStore store = GetIt.I<TodoStore>();
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(left: 15, right: 15, top: 15),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(25), topRight: Radius.circular(25)),
-        color: Colors.grey,
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(3, 3),
-            blurRadius: 10,
-            color: Color.fromRGBO(100, 100, 100, 50),
+    return Flexible(
+          child: SingleChildScrollView(
+            child: Container(
+          margin: const EdgeInsets.all(15),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25),
+            color: Colors.grey,
           ),
-        ]
-      ),
-      child: Observer(
-        builder: (_) {
-          return ListView.builder(
-            padding: const EdgeInsets.all(10),
-            itemCount: store.todoList.length + 1,
-            itemBuilder: (context, index) {
-              if(index == store.todoList.length) {
-                return AddTodo();
-              }
-              return TodoRow(store.todoList[index]);
-            },
-          );
-        },
-      ),
+          child: Observer(
+              builder: (_) {
+                return ListView.builder(
+          shrinkWrap: true,
+          padding: const EdgeInsets.all(10),
+          itemCount: store.todoList.length + 1,
+          itemBuilder: (context, index) {
+            if (index == store.todoList.length) {
+              return AddTodo();
+            }
+            return TodoRow(store.todoList[index]);
+          },
+                );
+              },
+            ),
+          ),
+        ),
     );
   }
 }
