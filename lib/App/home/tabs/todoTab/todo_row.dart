@@ -20,14 +20,24 @@ class TodoRow extends StatelessWidget {
     store.setData(td);
     store.setIndex(index);
 
-    return Observer(builder: (_) {
-      return Dismissible(
-        direction: DismissDirection.startToEnd,
-        background: Container(
+    return Dismissible(
+      direction: DismissDirection.startToEnd,
+      key: ValueKey(td),
+      background: Container(
+        padding: const EdgeInsets.only(left: 5),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
           color: Colors.red,
         ),
-        key: ValueKey(Todo),
-        child: Container(
+        child:
+            Align(alignment: Alignment.centerLeft, child: Icon(Icons.delete)),
+      ),
+      onDismissed: (e) {
+        todoStore.todoList.removeAt(index);
+        DataTodo().saveData(todoStore.todoList.toList());
+      },
+      child: Observer(builder: (_) {
+        return Container(
           height: 35,
           child: Row(
             children: [
@@ -45,7 +55,11 @@ class TodoRow extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 5),
                   child: TextFormField(
-                    style: GoogleFonts.roboto(),
+                    style: GoogleFonts.roboto(
+                      decoration:
+                          store.isCompleted ? TextDecoration.lineThrough : null,
+                      color: store.isCompleted ? Colors.black45 : Colors.black,
+                    ),
                     textAlignVertical: TextAlignVertical.center,
                     decoration: InputDecoration(
                         border: InputBorder.none,
@@ -63,8 +77,8 @@ class TodoRow extends StatelessWidget {
               )
             ],
           ),
-        ),
-      );
-    });
+        );
+      }),
+    );
   }
 }
