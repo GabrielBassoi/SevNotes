@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
+import 'package:sevnotes2/data/data_to-do.dart';
 import 'package:sevnotes2/stores/home_store.dart';
 import 'package:sevnotes2/stores/todo_store.dart';
 
@@ -33,6 +34,12 @@ class _MyAppState extends State<MyApp> {
     Data().readData().then((list) {
       if (list != null) {
         list.map((note) => store.notesList.add(note)).toList();
+      }
+    });
+
+    DataTodo().readData().then((list) {
+      if (list != null) {
+        list.map((todo) => todoStore.todoList.add(todo)).toList();
       }
     });
   }

@@ -2,16 +2,16 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
-import 'package:sevnotes2/models/note.dart';
+import 'package:sevnotes2/models/todo.dart';
 
-class Data {
+class DataTodo {
   Future<File> getFile() async {
-    final directory = await getApplicationDocumentsDirectory();
-    return File("${directory.path}/data.json");
+    final dic = await getApplicationDocumentsDirectory();
+    return File("${dic.path}/data_to-do.json");
   }
 
-  Future saveData(List<Note> list) async {
-    List listJSON = list.map((note) => note.toJson()).toList();
+  Future saveData(List<Todo> list) async {
+    List listJSON = list.map((todo) => todo.toJson()).toList();
     var data = json.encode(listJSON);
     final file = await getFile();
     file.writeAsString(data);
@@ -21,7 +21,7 @@ class Data {
     try {
       final file = await getFile();
       var data = json.decode(await file.readAsString());
-      List list = data.map((note) => Note.fromJson(note)).toList();
+      List list = data.map((todo) => Todo.fromJson(todo)).toList();
       return list;
     } catch (e) {
       print(e);

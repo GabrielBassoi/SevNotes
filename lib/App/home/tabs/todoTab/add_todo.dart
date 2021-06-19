@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sevnotes2/data/data_to-do.dart';
 import 'package:sevnotes2/models/todo.dart';
 import 'package:sevnotes2/stores/todo_store.dart';
 
@@ -13,6 +14,7 @@ class AddTodo extends StatelessWidget {
     return GestureDetector(
       onTap: (){
         store.todoList.add(Todo("", false));
+        DataTodo().saveData(store.todoList.toList());
       },
       child: Container(
         padding: const EdgeInsets.only(left: 5),

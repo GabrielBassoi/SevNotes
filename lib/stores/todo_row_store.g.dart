@@ -39,6 +39,21 @@ mixin _$TodoRowStore on _TodoRowStore, Store {
     });
   }
 
+  final _$indexAtom = Atom(name: '_TodoRowStore.index');
+
+  @override
+  int get index {
+    _$indexAtom.reportRead();
+    return super.index;
+  }
+
+  @override
+  set index(int value) {
+    _$indexAtom.reportWrite(value, super.index, () {
+      super.index = value;
+    });
+  }
+
   final _$_TodoRowStoreActionController =
       ActionController(name: '_TodoRowStore');
 
@@ -48,6 +63,28 @@ mixin _$TodoRowStore on _TodoRowStore, Store {
         name: '_TodoRowStore.setData');
     try {
       return super.setData(todo);
+    } finally {
+      _$_TodoRowStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void saveData() {
+    final _$actionInfo = _$_TodoRowStoreActionController.startAction(
+        name: '_TodoRowStore.saveData');
+    try {
+      return super.saveData();
+    } finally {
+      _$_TodoRowStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setIndex(int value) {
+    final _$actionInfo = _$_TodoRowStoreActionController.startAction(
+        name: '_TodoRowStore.setIndex');
+    try {
+      return super.setIndex(value);
     } finally {
       _$_TodoRowStoreActionController.endAction(_$actionInfo);
     }
@@ -79,7 +116,8 @@ mixin _$TodoRowStore on _TodoRowStore, Store {
   String toString() {
     return '''
 isCompleted: ${isCompleted},
-text: ${text}
+text: ${text},
+index: ${index}
     ''';
   }
 }

@@ -30,7 +30,7 @@ class TodoTab extends StatelessWidget {
                     if (index == store.todoList.length) {
                       return AddTodo();
                     }
-                    return TodoRow(store.todoList[index]);
+                    return TodoRow(store.todoList[index], index);
                   },
                 );
               },
