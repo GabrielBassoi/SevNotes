@@ -28,10 +28,11 @@ class TodoRow extends StatelessWidget {
               children: [
                 Checkbox(
                   value: store.isCompleted,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  activeColor: Colors.black,
                   onChanged: (value) {
                     store.setCompleted(value);
                   },
-                  activeColor: Colors.black,
                 ),
                 Expanded(
                   child: Padding(

@@ -21,31 +21,36 @@ class NoteCard extends StatelessWidget {
           color: Colors.grey,
           borderRadius: BorderRadius.circular(25),
         ),
-        child: Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                note.title,
-                maxLines: 1,
-                style: GoogleFonts.roboto(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              note.title,
+              maxLines: 1,
+              style: GoogleFonts.roboto(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
               ),
-              SizedBox(height: 5),
-              Expanded(
-                  child: Text(
-                note.body,
-                maxLines: 6,
-                style: GoogleFonts.roboto(fontSize: 12),
-              )),
-              Text(
-                note.creationDate,
-                style: GoogleFonts.roboto(fontSize: 11),
-              )
-            ],
-          ),
+            ),
+            SizedBox(height: 5),
+            Expanded(
+                child: Text(
+              note.body,
+              maxLines: 6,
+              style: GoogleFonts.roboto(fontSize: 12),
+            )),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  note.creationDate,
+                  style: GoogleFonts.roboto(fontSize: 11),
+                ),
+                note.isFavorite == true ? Icon(Icons.star, color: Color.fromARGB(255, 218, 165, 32),) : Container(),
+              ],
+            )
+          ],
         ),
       ),
     );

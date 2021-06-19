@@ -29,7 +29,8 @@ class NotesTab extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return Container(
                   margin: const EdgeInsets.all(13),
-                  child: NoteCard(store.notesList[index], index));
+                  child: NoteCard(store.notesList[index], index)
+              );
             });
       }
     });

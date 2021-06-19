@@ -11,31 +11,33 @@ class TodoTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-          child: SingleChildScrollView(
-            child: Container(
-          margin: const EdgeInsets.all(15),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(25),
-            color: Colors.grey,
-          ),
-          child: Observer(
+    return Column(
+      children: [
+        Flexible(
+          child: Container(
+            margin: const EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.circular(25),
+            ),
+            child: Observer(
               builder: (_) {
                 return ListView.builder(
-          shrinkWrap: true,
-          padding: const EdgeInsets.all(10),
-          itemCount: store.todoList.length + 1,
-          itemBuilder: (context, index) {
-            if (index == store.todoList.length) {
-              return AddTodo();
-            }
-            return TodoRow(store.todoList[index]);
-          },
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.all(10),
+                  itemCount: store.todoList.length + 1,
+                  itemBuilder: (context, index) {
+                    if (index == store.todoList.length) {
+                      return AddTodo();
+                    }
+                    return TodoRow(store.todoList[index]);
+                  },
                 );
               },
             ),
           ),
         ),
+      ],
     );
   }
 }

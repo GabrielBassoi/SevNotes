@@ -15,7 +15,7 @@ class AddTodo extends StatelessWidget {
         store.todoList.add(Todo("", false));
       },
       child: Container(
-        padding: const EdgeInsets.only(top: 5, left: 9),
+        padding: const EdgeInsets.only(left: 5),
         child: Row(
           children: [
             Icon(Icons.add, size: 30, color: Colors.black,),

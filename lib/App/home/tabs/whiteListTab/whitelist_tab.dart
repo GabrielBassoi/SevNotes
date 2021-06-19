@@ -21,7 +21,6 @@ class WhitelistTab extends StatelessWidget {
         ind.add(e);
       }
     }
-
     return Observer(builder: (_) {
       if (i == 0) {
         return EmptyList(
