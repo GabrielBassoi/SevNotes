@@ -7,8 +7,14 @@ part 'home_store.g.dart';
 class HomeStore = _HomeStore with _$HomeStore;
 
 abstract class _HomeStore with Store {
+  @observable
+  int tabIndex;
+
   ObservableList<Note> notesList = ObservableList<Note>();
 
   @action
   void setNotesList(ObservableList value) => notesList = value;
+
+  @action
+  void setTabIndex(int value) => tabIndex = value;
 }

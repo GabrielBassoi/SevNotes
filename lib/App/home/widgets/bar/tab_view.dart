@@ -4,7 +4,6 @@ import 'package:sevnotes2/App/home/tabs/todoTab/todo_tab.dart';
 import 'package:sevnotes2/App/home/tabs/whiteListTab/whitelist_tab.dart';
 
 class TabView extends StatelessWidget {
-
   final TabController tabController;
   TabView(this.tabController);
 

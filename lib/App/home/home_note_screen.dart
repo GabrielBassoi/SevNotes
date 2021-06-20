@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:get_it/get_it.dart';
 import 'package:sevnotes2/App/EditNote/edit_note.dart';
+import 'package:sevnotes2/stores/home_store.dart';
 
 import 'widgets/bar/bar.dart';
 import 'widgets/bar/tab_view.dart';
@@ -14,10 +17,14 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
     with SingleTickerProviderStateMixin {
   TabController tabController;
 
+  final HomeStore store = GetIt.I<HomeStore>();
+
   @override
   void initState() {
     super.initState();
     tabController = TabController(length: 3, vsync: this);
+    tabController.addListener(_getInd);
+    store.setTabIndex(0);
   }
 
   @override
@@ -41,21 +48,29 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
             padding: const EdgeInsets.only(bottom: 15, left: 15, right: 15),
             child: BarTab(tabController),
           ),
-          Expanded(
-            child: Scaffold(
-              body: TabView(tabController),
-              floatingActionButton: FloatingActionButton(
-                backgroundColor: Colors.grey,
-                onPressed: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) => EditNote()));
-                },
-                child: Icon(Icons.add, color: Colors.black),
+          Observer(builder: (_) {
+            return Expanded(
+              child: Scaffold(
+                body: TabView(tabController),
+                floatingActionButton: store.tabIndex != 0
+                    ? null
+                    : FloatingActionButton(
+                        backgroundColor: Colors.grey,
+                        child: Icon(Icons.add, color: Colors.black),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                              MaterialPageRoute(builder: (_) => EditNote()));
+                        },
+                      ),
               ),
-            ),
-          ),
+            );
+          }),
         ],
       ),
     );
+  }
+
+  void _getInd() {
+    store.setTabIndex(tabController.index);
   }
 }
