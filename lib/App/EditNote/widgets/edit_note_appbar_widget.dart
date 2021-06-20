@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sevnotes2/App/EditNote/widgets/aler_dialog_widget.dart';
 import 'package:sevnotes2/data/data.dart';
 import 'package:sevnotes2/stores/edit_note_store.dart';
 import 'package:sevnotes2/stores/home_store.dart';
@@ -62,8 +63,7 @@ class EditNoteAppBarWidget extends PreferredSize {
                 splashRadius: 20,
                 onPressed: store.index != null
                     ? () {
-                        store.deleteData();
-                        Navigator.of(context).pop();
+                        showDialogWidget(context, store);
                       }
                     : null,
                 iconSize: 25,
