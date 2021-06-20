@@ -2,15 +2,18 @@
 
 A new Flutter application.
 
-## Getting Started
+## What is SevNotes?
 
-This project is a starting point for a Flutter application.
+__SeveNotes__ is my first aplicattion i maded on my own and it's a note and a to-do aplication. I used MobX for the State-Manegement. For data, I saved it in a JSON file.
 
-A few resources to get you started if this is your first Flutter project:
+I learned a lot with this project!
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Some features:
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- 6 differents themes
+- Animations
+- Whitelist
+- Searching
+- A Digital clock and a date
+
+
