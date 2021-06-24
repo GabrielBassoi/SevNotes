@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:sevnotes2/App/Settings/settings_screen.dart';
+import 'package:sevnotes2/App/home/widgets/bar/Search/search.dart';
 
 class ToolBar extends StatefulWidget {
   @override
@@ -49,17 +50,10 @@ class _ToolBarState extends State<ToolBar> {
       children: [
         Container(
             height: 70,
-            width: size.width * 0.53,
+            width: size.width * 0.58,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
               color: Colors.grey,
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(3, 3),
-                  blurRadius: 10,
-                  color: Color.fromRGBO(100, 100, 100, 50),
-                )
-              ]
             ),
             child: Material(
               color: Colors.transparent,
@@ -79,11 +73,7 @@ class _ToolBarState extends State<ToolBar> {
                   ),
                   Align(
                     alignment: Alignment.bottomRight,
-                    child: IconButton(
-                      splashRadius: 20,
-                      icon: Icon(Icons.search, size: 25,),
-                      onPressed: (){},
-                    ),
+                    child: SearchWidget(),
                   )
                 ],
               ),
@@ -97,13 +87,6 @@ class _ToolBarState extends State<ToolBar> {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(25),
               color: Colors.grey,
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(3, 3),
-                  blurRadius: 10,
-                  color: Color.fromRGBO(100, 100, 100, 50)
-                )
-              ]
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,

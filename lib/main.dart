@@ -3,13 +3,15 @@ import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sevnotes2/data/data_to-do.dart';
 import 'package:sevnotes2/stores/home_store.dart';
+import 'package:sevnotes2/stores/search_store.dart';
 import 'package:sevnotes2/stores/todo_store.dart';
 
 import 'App/home/home_note_screen.dart';
 import 'data/data.dart';
 
-final HomeStore store = GetIt.I<HomeStore>();
+final HomeStore storeHome = GetIt.I<HomeStore>();
 final TodoStore todoStore = GetIt.I<TodoStore>();
+final SearchStore searchStore = GetIt.I<SearchStore>();
 void main() async {
   setupLocates();
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +22,7 @@ void main() async {
 void setupLocates() {
   GetIt.I.registerSingleton(HomeStore());
   GetIt.I.registerSingleton(TodoStore());
+  GetIt.I.registerSingleton(SearchStore());
 }
 
 class MyApp extends StatefulWidget {
@@ -31,9 +34,10 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    searchStore.setSearchText("");
     Data().readData().then((list) {
       if (list != null) {
-        list.map((note) => store.notesList.add(note)).toList();
+        list.map((note) => storeHome.notesList.add(note)).toList();
       }
     });
 

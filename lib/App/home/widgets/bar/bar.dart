@@ -6,6 +6,7 @@ class BarTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Material(
       elevation: 0,
       child: Container(
@@ -13,27 +14,15 @@ class BarTab extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.grey,
           borderRadius: BorderRadius.circular(25),
-          boxShadow: [
-            BoxShadow(
-              offset: Offset(3, 3),
-              blurRadius: 10,
-              color: Color.fromRGBO(100, 100, 100, 50),
-            ),
-          ],
         ),
         child: TabBar(
           controller: tabController,
           indicatorColor: Colors.transparent,
-          indicatorPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+          indicatorPadding:
+              EdgeInsets.symmetric(horizontal: size.width * 0.03, vertical: 10),
           indicator: BoxDecoration(
             color: Colors.grey[700],
             borderRadius: BorderRadius.circular(25),
-            boxShadow: [
-              BoxShadow(
-                  offset: Offset(3, 3),
-                  blurRadius: 10,
-                  color: Color.fromRGBO(100, 100, 100, 50))
-            ],
           ),
           tabs: [
             tabb("Notes", Icons.article),
