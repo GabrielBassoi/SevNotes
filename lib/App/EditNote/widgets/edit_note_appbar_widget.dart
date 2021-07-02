@@ -30,13 +30,13 @@ class EditNoteAppBarWidget extends PreferredSize {
               padding: EdgeInsets.zero,
               constraints: BoxConstraints(),
               onPressed: () {
-                if (store.index == null) {
+                if (store.edit == false) {
                   store.addData();
                 } else {
                   store.saveData();
                 }
                 HomeStore homeStore = GetIt.I<HomeStore>();
-                Data().saveData(homeStore.notesList.toList());
+                Data().saveData(homeStore.primaryList.toList());
                 Navigator.of(context).pop();
               },
               splashRadius: 20,
@@ -61,7 +61,7 @@ class EditNoteAppBarWidget extends PreferredSize {
                 padding: EdgeInsets.zero,
                 constraints: BoxConstraints(),
                 splashRadius: 20,
-                onPressed: store.index != null
+                onPressed: store.edit
                     ? () {
                         showDialogWidget(context, store);
                       }

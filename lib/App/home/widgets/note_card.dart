@@ -5,15 +5,14 @@ import 'package:sevnotes2/models/note.dart';
 
 class NoteCard extends StatelessWidget {
   final Note note;
-  final int index;
-  NoteCard(this.note, this.index);
+  NoteCard(this.note);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-            builder: (_) => EditNote(note: note, index: index)));
+            builder: (_) => EditNote(note: note, edit: true,)));
       },
       child: Container(
         padding: const EdgeInsets.all(15),

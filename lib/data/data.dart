@@ -17,11 +17,11 @@ class Data {
     file.writeAsString(data);
   }
 
-  Future<List> readData() async {
+  Future<List<Note>> readData() async {
     try {
       final file = await getFile();
       var data = json.decode(await file.readAsString());
-      List list = data.map((note) => Note.fromJson(note)).toList();
+      List<Note> list = data.map<Note>((note) => Note.fromJson(note)).toList();
       return list;
     } catch (e) {
       print(e);

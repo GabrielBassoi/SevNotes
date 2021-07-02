@@ -17,7 +17,7 @@ class DataTodo {
     file.writeAsString(data);
   }
 
-  Future<List> readData() async {
+  Future<List<Todo>> readData() async {
     try {
       final file = await getFile();
       var data = json.decode(await file.readAsString());

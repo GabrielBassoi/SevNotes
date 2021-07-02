@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
-import 'package:sevnotes2/stores/search_store.dart';
+import 'package:sevnotes2/stores/home_store.dart';
 
 class SearchWidget extends StatefulWidget {
   @override
@@ -9,7 +9,7 @@ class SearchWidget extends StatefulWidget {
 }
 
 class _SearchWidgetState extends State<SearchWidget> {
-  final SearchStore store = GetIt.I<SearchStore>();
+  final HomeStore store = GetIt.I<HomeStore>();
   TextEditingController controller = TextEditingController();
 
   @override
@@ -50,7 +50,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                               border: InputBorder.none,
                             ),
                             onChanged: (text) {
-                              store.setSearchText(text);
+                              store.setSearchText(controller.text);
                               print(store.searchText);
                             },
                           ),

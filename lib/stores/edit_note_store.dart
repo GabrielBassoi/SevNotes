@@ -1,6 +1,5 @@
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
-import 'package:sevnotes2/App/EditNote/widgets/date.dart';
 import 'package:sevnotes2/models/note.dart';
 import 'package:sevnotes2/stores/home_store.dart';
 
@@ -13,7 +12,7 @@ abstract class _EditNoteStore with Store {
   final HomeStore store = GetIt.I<HomeStore>();
 
   @observable
-  int index;
+  String id;
 
   @observable
   String title;
@@ -23,6 +22,9 @@ abstract class _EditNoteStore with Store {
 
   @observable
   bool isFavorite;
+
+  @observable
+  bool edit;
 
   @observable
   String creationDate;
@@ -37,10 +39,9 @@ abstract class _EditNoteStore with Store {
   void setFavorite() => isFavorite = !isFavorite;
 
   @action
-  void setIndex(int value) => index = value;
-
-  @action
-  void setData(Note note) {
+  void setData(Note note, bool e) {
+    edit = e;
+    id = note.id;
     title = note.title;
     body = note.body;
     isFavorite = note.isFavorite;
@@ -49,19 +50,40 @@ abstract class _EditNoteStore with Store {
 
   @action
   void addData() {
-    store.notesList.add(Note(title, body, isFavorite, creationDate));
+    store.primaryList.add(Note(
+      title: title,
+      body: body,
+      isFavorite: isFavorite,
+      creationDate: creationDate,
+      id: id,
+    ));
   }
 
   @action
   void saveData() {
-    store.notesList[index].body = this.body;
-    store.notesList[index].creationDate = date();
-    store.notesList[index].title = this.title;
-    store.notesList[index].isFavorite = this.isFavorite;
+    store.primaryList[index()] = Note(
+      title: title,
+      body: body,
+      isFavorite: isFavorite,
+      creationDate: creationDate,
+      id: id,
+    );
   }
 
   @action
   void deleteData() {
-    store.notesList.removeAt(index);
+    store.primaryList.removeAt(index());
+  }
+
+  @action
+  int index() {
+    int i = store.primaryList.indexWhere((element) {
+      if (element.id == id) {
+        return true;
+      }
+      return false;
+    }).toInt();
+    print("------------- $i --------------------");
+    return i;
   }
 }

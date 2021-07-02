@@ -3,8 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sevnotes2/App/home/widgets/note_card.dart';
 import 'package:sevnotes2/stores/home_store.dart';
-import 'package:sevnotes2/stores/search_store.dart';
-
 import '../empty_list.dart';
 
 class NotesTab extends StatefulWidget {
@@ -22,47 +20,35 @@ class _NotesTabState extends State<NotesTab> {
     SliverGridDelegateWithFixedCrossAxisCount gridDelegate =
         SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2);
 
-    List ind = [];
-    int i = 0;
-    final SearchStore searchStore = GetIt.I<SearchStore>();
-
-    return Observer(builder: (_) {
-      if (store.notesList.isEmpty) {
-        return EmptyList(
-          title: "Where is my notes???",
-          subTitle: "Click on the add button to add your first note!",
-          icons: Icons.help_outline,
-        );
-      } else if (searchStore.searchText.isNotEmpty) {
-        ind = [];
-        i = 0;
-        for (int e = 0; e < store.notesList.length; e++) {
-          if (store.notesList[e].title.contains(searchStore.searchText) ||
-              store.notesList[e].body.contains(searchStore.searchText)) {
-            i += 1;
-            ind.add(e);
-          }
-        }
-        print(i);
-        print(ind.toString());
-        return GridView.builder(
-            gridDelegate: gridDelegate,
-            itemCount: i,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                  margin: const EdgeInsets.all(13),
-                  child: NoteCard(store.notesList[ind[index]], ind[index]));
-            });
-      } else {
-        return GridView.builder(
+    return Observer(
+      builder: (_) {
+        if (store.notesList.isEmpty && store.searchText.isEmpty) {
+          return EmptyList(
+            title: "Where is my notes???",
+            subTitle: "Click on the add button to add your first note!",
+            icons: Icons.help_outline,
+          );
+        } else if(store.searchText.isNotEmpty && store.notesList.isEmpty) {
+          return EmptyList(
+            title: "I didn't find anything!",
+            subTitle: "Try to put something different",
+            icons: Icons.search,
+          );
+        } else {
+          return GridView.builder(
             gridDelegate: gridDelegate,
             itemCount: store.notesList.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                  margin: const EdgeInsets.all(13),
-                  child: NoteCard(store.notesList[index], index));
-            });
-      }
-    });
+                margin: const EdgeInsets.all(13),
+                child: NoteCard(
+                  store.notesList[index],
+                ),
+              );
+            },
+          );
+        }
+      },
+    );
   }
 }

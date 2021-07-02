@@ -24,18 +24,37 @@ mixin _$HomeStore on _HomeStore, Store {
     });
   }
 
-  final _$_HomeStoreActionController = ActionController(name: '_HomeStore');
+  final _$foldedAtom = Atom(name: '_HomeStore.folded');
 
   @override
-  void setNotesList(ObservableList<dynamic> value) {
-    final _$actionInfo = _$_HomeStoreActionController.startAction(
-        name: '_HomeStore.setNotesList');
-    try {
-      return super.setNotesList(value);
-    } finally {
-      _$_HomeStoreActionController.endAction(_$actionInfo);
-    }
+  bool get folded {
+    _$foldedAtom.reportRead();
+    return super.folded;
   }
+
+  @override
+  set folded(bool value) {
+    _$foldedAtom.reportWrite(value, super.folded, () {
+      super.folded = value;
+    });
+  }
+
+  final _$searchTextAtom = Atom(name: '_HomeStore.searchText');
+
+  @override
+  String get searchText {
+    _$searchTextAtom.reportRead();
+    return super.searchText;
+  }
+
+  @override
+  set searchText(String value) {
+    _$searchTextAtom.reportWrite(value, super.searchText, () {
+      super.searchText = value;
+    });
+  }
+
+  final _$_HomeStoreActionController = ActionController(name: '_HomeStore');
 
   @override
   void setTabIndex(int value) {
@@ -49,9 +68,44 @@ mixin _$HomeStore on _HomeStore, Store {
   }
 
   @override
+  void setFolded() {
+    final _$actionInfo =
+        _$_HomeStoreActionController.startAction(name: '_HomeStore.setFolded');
+    try {
+      return super.setFolded();
+    } finally {
+      _$_HomeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setSearchText(String value) {
+    final _$actionInfo = _$_HomeStoreActionController.startAction(
+        name: '_HomeStore.setSearchText');
+    try {
+      return super.setSearchText(value);
+    } finally {
+      _$_HomeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void search() {
+    final _$actionInfo =
+        _$_HomeStoreActionController.startAction(name: '_HomeStore.search');
+    try {
+      return super.search();
+    } finally {
+      _$_HomeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-tabIndex: ${tabIndex}
+tabIndex: ${tabIndex},
+folded: ${folded},
+searchText: ${searchText}
     ''';
   }
 }

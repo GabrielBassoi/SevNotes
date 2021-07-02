@@ -9,18 +9,18 @@ part of 'edit_note_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$EditNoteStore on _EditNoteStore, Store {
-  final _$indexAtom = Atom(name: '_EditNoteStore.index');
+  final _$idAtom = Atom(name: '_EditNoteStore.id');
 
   @override
-  int get index {
-    _$indexAtom.reportRead();
-    return super.index;
+  String get id {
+    _$idAtom.reportRead();
+    return super.id;
   }
 
   @override
-  set index(int value) {
-    _$indexAtom.reportWrite(value, super.index, () {
-      super.index = value;
+  set id(String value) {
+    _$idAtom.reportWrite(value, super.id, () {
+      super.id = value;
     });
   }
 
@@ -66,6 +66,21 @@ mixin _$EditNoteStore on _EditNoteStore, Store {
   set isFavorite(bool value) {
     _$isFavoriteAtom.reportWrite(value, super.isFavorite, () {
       super.isFavorite = value;
+    });
+  }
+
+  final _$editAtom = Atom(name: '_EditNoteStore.edit');
+
+  @override
+  bool get edit {
+    _$editAtom.reportRead();
+    return super.edit;
+  }
+
+  @override
+  set edit(bool value) {
+    _$editAtom.reportWrite(value, super.edit, () {
+      super.edit = value;
     });
   }
 
@@ -121,22 +136,11 @@ mixin _$EditNoteStore on _EditNoteStore, Store {
   }
 
   @override
-  void setIndex(int value) {
-    final _$actionInfo = _$_EditNoteStoreActionController.startAction(
-        name: '_EditNoteStore.setIndex');
-    try {
-      return super.setIndex(value);
-    } finally {
-      _$_EditNoteStoreActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setData(Note note) {
+  void setData(Note note, bool e) {
     final _$actionInfo = _$_EditNoteStoreActionController.startAction(
         name: '_EditNoteStore.setData');
     try {
-      return super.setData(note);
+      return super.setData(note, e);
     } finally {
       _$_EditNoteStoreActionController.endAction(_$actionInfo);
     }
@@ -176,12 +180,24 @@ mixin _$EditNoteStore on _EditNoteStore, Store {
   }
 
   @override
+  int index() {
+    final _$actionInfo = _$_EditNoteStoreActionController.startAction(
+        name: '_EditNoteStore.index');
+    try {
+      return super.index();
+    } finally {
+      _$_EditNoteStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-index: ${index},
+id: ${id},
 title: ${title},
 body: ${body},
 isFavorite: ${isFavorite},
+edit: ${edit},
 creationDate: ${creationDate}
     ''';
   }

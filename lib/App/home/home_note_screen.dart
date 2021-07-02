@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mobx/mobx.dart';
 import 'package:sevnotes2/App/EditNote/edit_note.dart';
 import 'package:sevnotes2/stores/home_store.dart';
 
@@ -18,6 +19,7 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
   TabController tabController;
 
   final HomeStore store = GetIt.I<HomeStore>();
+  ReactionDisposer disposer;
 
   @override
   void initState() {
@@ -28,8 +30,37 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    disposer = autorun(
+      (_) {
+        print("---------------------------------===========---------------");
+        if (store.searchText == "" ||
+            store.searchText.isEmpty ||
+            store.searchText == null) {
+          store.setNotesList(store.primaryList);
+        } else {
+          print("--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--");
+          List l = store.primaryList
+              .where((note) =>
+                  note.title
+                      .toLowerCase()
+                      .contains(store.searchText.toLowerCase()) ||
+                  note.body
+                      .toLowerCase()
+                      .contains(store.searchText.toLowerCase()))
+              .toList();
+          store.setNotesList(l);
+        }
+      },
+    );
+  }
+
+  @override
   void dispose() {
     tabController.dispose();
+    disposer();
     super.dispose();
   }
 

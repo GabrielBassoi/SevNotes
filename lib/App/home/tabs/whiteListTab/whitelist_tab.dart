@@ -22,25 +22,34 @@ class WhitelistTab extends StatelessWidget {
       }
     }
     return Observer(builder: (_) {
-      if (i == 0) {
+      if (i == 0 && store.searchText.isEmpty) {
         return EmptyList(
             title: "Where is my favorites notes????",
             subTitle:
                 "Go to some note and click on the star to add your first favorite note",
             icons: Icons.favorite_border);
+      } else if (store.searchText.isNotEmpty && store.notesList.isEmpty) {
+        return EmptyList(
+          title: "I didn't find anything!",
+          subTitle: "Try to put something different",
+          icons: Icons.search,
+        );
+      } else {
+        return Container(
+          child: GridView.builder(
+            gridDelegate: gridDelegate,
+            itemCount: i,
+            itemBuilder: (BuildContext context, int index) {
+              return Container(
+                margin: const EdgeInsets.all(13),
+                child: NoteCard(
+                  store.notesList[ind[index]],
+                ),
+              );
+            },
+          ),
+        );
       }
-      return Container(
-        child: GridView.builder(
-          gridDelegate: gridDelegate,
-          itemCount: i,
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              margin: const EdgeInsets.all(13),
-              child: NoteCard(store.notesList[ind[index]], ind[index]),
-            );
-          },
-        ),
-      );
     });
   }
 }
