@@ -6,26 +6,33 @@ import 'package:sevnotes2/App/EditNote/widgets/aler_dialog_widget.dart';
 import 'package:sevnotes2/data/data.dart';
 import 'package:sevnotes2/stores/edit_note_store.dart';
 import 'package:sevnotes2/stores/home_store.dart';
+import 'package:sevnotes2/stores/settings_store.dart';
 
 class EditNoteAppBarWidget extends PreferredSize {
   final EditNoteStore store;
   final BuildContext context;
-  EditNoteAppBarWidget(this.store, this.context)
+  final SettingsStore setStore;
+  EditNoteAppBarWidget(this.store, this.context, this.setStore)
       : super(
-          preferredSize: Size.fromHeight(65),
+          preferredSize: Size.fromHeight(60),
           child: AppBar(
             toolbarHeight: 65,
-            elevation: 15,
-            shadowColor: Color.fromRGBO(100, 100, 100, 50),
+            elevation: 0,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25))),
-            title: Observer(builder: (_) {
-              return Text("${store.creationDate}",
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20))),
+            title: Observer(
+              builder: (_) {
+                return Text(
+                  "${store.creationDate}",
                   style: GoogleFonts.roboto(
-                      fontSize: 15, color: Color.fromRGBO(93, 93, 93, 100)));
-            }),
+                    fontSize: 15,
+                    color: setStore.theme.clockDate,
+                  ),
+                );
+              },
+            ),
             leading: IconButton(
               padding: EdgeInsets.zero,
               constraints: BoxConstraints(),
@@ -41,7 +48,7 @@ class EditNoteAppBarWidget extends PreferredSize {
               },
               splashRadius: 20,
               iconSize: 25,
-              icon: Icon(Icons.keyboard_arrow_left),
+              icon: Icon(Icons.keyboard_arrow_left, color: setStore.theme.primary,),
             ),
             actions: [
               Observer(builder: (_) {

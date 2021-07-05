@@ -52,7 +52,7 @@ class _ToolBarState extends State<ToolBar> {
             height: 70,
             width: size.width * 0.58,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(20),
               color: Colors.grey,
             ),
             child: Material(
@@ -85,7 +85,7 @@ class _ToolBarState extends State<ToolBar> {
             height: 70,
             width: size.width * 0.3,
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(20),
               color: Colors.grey,
             ),
             child: Column(

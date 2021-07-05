@@ -13,7 +13,7 @@ class BarTab extends StatelessWidget {
         height: 60,
         decoration: BoxDecoration(
           color: Colors.grey,
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(20),
         ),
         child: TabBar(
           controller: tabController,
@@ -22,7 +22,7 @@ class BarTab extends StatelessWidget {
               EdgeInsets.symmetric(horizontal: size.width * 0.03, vertical: 10),
           indicator: BoxDecoration(
             color: Colors.grey[700],
-            borderRadius: BorderRadius.circular(25),
+            borderRadius: BorderRadius.circular(20),
           ),
           tabs: [
             tabb("Notes", Icons.article),

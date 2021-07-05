@@ -90,6 +90,50 @@ mixin _$HomeStore on _HomeStore, Store {
   }
 
   @override
+  dynamic setPrimaryObject(Note note, int index) {
+    final _$actionInfo = _$_HomeStoreActionController.startAction(
+        name: '_HomeStore.setPrimaryObject');
+    try {
+      return super.setPrimaryObject(note, index);
+    } finally {
+      _$_HomeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setPrimaryList(List<Note> list) {
+    final _$actionInfo = _$_HomeStoreActionController.startAction(
+        name: '_HomeStore.setPrimaryList');
+    try {
+      return super.setPrimaryList(list);
+    } finally {
+      _$_HomeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setNotesObject(Note note, int index) {
+    final _$actionInfo = _$_HomeStoreActionController.startAction(
+        name: '_HomeStore.setNotesObject');
+    try {
+      return super.setNotesObject(note, index);
+    } finally {
+      _$_HomeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic setNotesList(List<Note> list) {
+    final _$actionInfo = _$_HomeStoreActionController.startAction(
+        name: '_HomeStore.setNotesList');
+    try {
+      return super.setNotesList(list);
+    } finally {
+      _$_HomeStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void search() {
     final _$actionInfo =
         _$_HomeStoreActionController.startAction(name: '_HomeStore.search');

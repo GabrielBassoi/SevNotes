@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:sevnotes2/App/EditNote/widgets/date.dart';
 import 'package:sevnotes2/App/EditNote/widgets/edit_note_appbar_widget.dart';
 import 'package:sevnotes2/App/EditNote/widgets/edit_note_body_widget.dart';
 import 'package:sevnotes2/models/note.dart';
 import 'package:sevnotes2/stores/edit_note_store.dart';
+import 'package:sevnotes2/stores/settings_store.dart';
 import 'package:uuid/uuid.dart';
 
 class EditNote extends StatelessWidget {
@@ -12,6 +14,7 @@ class EditNote extends StatelessWidget {
   EditNote({this.note, this.edit = false});
 
   final EditNoteStore store = EditNoteStore();
+  final SettingsStore setStore = GetIt.I<SettingsStore>();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,7 @@ class EditNote extends StatelessWidget {
     }
     return Container(
       child: Scaffold(
-        appBar: EditNoteAppBarWidget(store, context),
+        appBar: EditNoteAppBarWidget(store, context, setStore),
         body: Container(
           padding: const EdgeInsets.all(15),
           child: EditNoteBodyWidget(store: store),

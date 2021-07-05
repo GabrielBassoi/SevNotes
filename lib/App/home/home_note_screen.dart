@@ -35,13 +35,11 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
 
     disposer = autorun(
       (_) {
-        print("---------------------------------===========---------------");
         if (store.searchText == "" ||
             store.searchText.isEmpty ||
             store.searchText == null) {
           store.setNotesList(store.primaryList);
         } else {
-          print("--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--=--");
           List l = store.primaryList
               .where((note) =>
                   note.title

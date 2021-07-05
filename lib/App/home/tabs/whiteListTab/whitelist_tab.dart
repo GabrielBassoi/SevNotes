@@ -13,15 +13,15 @@ class WhitelistTab extends StatelessWidget {
     SliverGridDelegateWithFixedCrossAxisCount gridDelegate =
         SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2);
 
-    List ind = [];
-    int i = 0;
-    for (int e = 0; e < store.notesList.length; e++) {
-      if (store.notesList[e].isFavorite == true) {
-        i += 1;
-        ind.add(e);
-      }
-    }
     return Observer(builder: (_) {
+      List ind = [];
+      int i = 0;
+      for (int e = 0; e < store.notesList.length; e++) {
+        if (store.notesList[e].isFavorite == true) {
+          i += 1;
+          ind.add(e);
+        }
+      }
       if (i == 0 && store.searchText.isEmpty) {
         return EmptyList(
             title: "Where is my favorites notes????",
@@ -37,6 +37,7 @@ class WhitelistTab extends StatelessWidget {
       } else {
         return Container(
           child: GridView.builder(
+            reverse: true,
             gridDelegate: gridDelegate,
             itemCount: i,
             itemBuilder: (BuildContext context, int index) {

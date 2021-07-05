@@ -8,6 +8,7 @@ import 'package:sevnotes2/stores/todo_store.dart';
 
 import 'App/home/home_note_screen.dart';
 import 'data/data.dart';
+import 'stores/settings_store.dart';
 
 final HomeStore storeHome = GetIt.I<HomeStore>();
 final TodoStore todoStore = GetIt.I<TodoStore>();
@@ -23,6 +24,7 @@ void main() async {
 void setupLocates() {
   GetIt.I.registerSingleton(HomeStore());
   GetIt.I.registerSingleton(TodoStore());
+  GetIt.I.registerSingleton(SettingsStore());
 }
 
 class MyApp extends StatefulWidget {

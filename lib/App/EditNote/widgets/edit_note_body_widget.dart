@@ -12,18 +12,10 @@ class EditNoteBodyWidget extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding:
-              const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+          padding: const EdgeInsets.only(right: 15, left: 15),
           decoration: BoxDecoration(
             color: Colors.grey,
-            borderRadius: BorderRadius.circular(25),
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(3, 3),
-                blurRadius: 10,
-                color: Color.fromRGBO(100, 100, 100, 50),
-              )
-            ],
+            borderRadius: BorderRadius.circular(20),
           ),
           child: Observer(builder: (_) {
             return TextFormField(
@@ -50,14 +42,7 @@ class EditNoteBodyWidget extends StatelessWidget {
                 const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
             decoration: BoxDecoration(
               color: Colors.grey,
-              borderRadius: BorderRadius.circular(25),
-              boxShadow: [
-                BoxShadow(
-                  offset: Offset(3, 3),
-                  blurRadius: 10,
-                  color: Color.fromRGBO(100, 100, 100, 50),
-                )
-              ],
+              borderRadius: BorderRadius.circular(20),
             ),
             child: SingleChildScrollView(
               child: TextFormField(

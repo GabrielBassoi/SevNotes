@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
@@ -28,7 +29,7 @@ class _NotesTabState extends State<NotesTab> {
             subTitle: "Click on the add button to add your first note!",
             icons: Icons.help_outline,
           );
-        } else if(store.searchText.isNotEmpty && store.notesList.isEmpty) {
+        } else if (store.searchText.isNotEmpty && store.notesList.isEmpty) {
           return EmptyList(
             title: "I didn't find anything!",
             subTitle: "Try to put something different",
@@ -36,14 +37,13 @@ class _NotesTabState extends State<NotesTab> {
           );
         } else {
           return GridView.builder(
+            //reverse: true,
             gridDelegate: gridDelegate,
             itemCount: store.notesList.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 margin: const EdgeInsets.all(13),
-                child: NoteCard(
-                  store.notesList[index],
-                ),
+                child: NoteCard(store.notesList[index]),
               );
             },
           );

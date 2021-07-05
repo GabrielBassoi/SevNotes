@@ -18,7 +18,7 @@ class NoteCard extends StatelessWidget {
         padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: Colors.grey,
-          borderRadius: BorderRadius.circular(25),
+          borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
