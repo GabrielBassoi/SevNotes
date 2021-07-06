@@ -4,14 +4,16 @@ import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sevnotes2/data/data_to-do.dart';
 import 'package:sevnotes2/models/todo.dart';
+import 'package:sevnotes2/stores/settings_store.dart';
 import 'package:sevnotes2/stores/todo_row_store.dart';
 import 'package:sevnotes2/stores/todo_store.dart';
 
 class TodoRow extends StatelessWidget {
   final TodoRowStore store = TodoRowStore();
   final TodoStore todoStore = GetIt.I<TodoStore>();
+  final SettingsStore setStore;
 
-  TodoRow(this.td, this.index);
+  TodoRow(this.td, this.index, this.setStore);
   final Todo td;
   final int index;
 
@@ -41,15 +43,19 @@ class TodoRow extends StatelessWidget {
           height: 35,
           child: Row(
             children: [
-              Checkbox(
-                value: store.isCompleted,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                activeColor: Colors.black,
-                onChanged: (value) {
-                  store.setCompleted(value);
-                  store.saveData();
-                  DataTodo().saveData(todoStore.todoList.toList());
-                },
+              Theme(
+                data: Theme.of(context).copyWith(unselectedWidgetColor: setStore.theme.background),
+                child: Checkbox(
+                  value: store.isCompleted,
+                  materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                  activeColor: setStore.theme.primary,
+                  checkColor: setStore.theme.background,
+                  onChanged: (value) {
+                    store.setCompleted(value);
+                    store.saveData();
+                    DataTodo().saveData(todoStore.todoList.toList());
+                  },
+                ),
               ),
               Expanded(
                 child: Padding(
@@ -58,14 +64,16 @@ class TodoRow extends StatelessWidget {
                     style: GoogleFonts.roboto(
                       decoration:
                           store.isCompleted ? TextDecoration.lineThrough : null,
-                      color: store.isCompleted ? Colors.black45 : Colors.black,
+                      color: store.isCompleted
+                          ? setStore.theme.text.withAlpha(200)
+                          : setStore.theme.text,
                     ),
                     textAlignVertical: TextAlignVertical.center,
                     decoration: InputDecoration(
                         border: InputBorder.none,
                         hintText: "Your To-do",
                         hintStyle: GoogleFonts.roboto(
-                            color: Colors.black45, fontSize: 13)),
+                            color: setStore.theme.text, fontSize: 13)),
                     initialValue: store.text,
                     onChanged: (e) {
                       store.setText(e);

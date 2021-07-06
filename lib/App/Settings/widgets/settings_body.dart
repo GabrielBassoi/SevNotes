@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mobx/mobx.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sevnotes2/stores/settings_store.dart';
 
 import 'radio_widget.dart';
@@ -9,7 +9,7 @@ import 'radio_widget.dart';
 class SettingsBody extends StatelessWidget {
   SettingsBody({Key key}) : super(key: key);
 
-  final SettingsStore store = GetIt.I<SettingsStore>();
+  final SettingsStore setStore = GetIt.I<SettingsStore>();
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +22,10 @@ class SettingsBody extends StatelessWidget {
             padding: const EdgeInsets.only(left: 22, bottom: 3),
             child: Text(
               "Theme's",
-              style: TextStyle(
-                fontFamily: "Roboto",
+              style: GoogleFonts.roboto(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
+                color: setStore.theme.text
               ),
             ),
           ),
@@ -35,7 +35,7 @@ class SettingsBody extends StatelessWidget {
             width: 270,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color: Colors.grey,
+              color: setStore.theme.layout,
             ),
             child: Observer(
               builder: (_) {
@@ -43,9 +43,9 @@ class SettingsBody extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     RadioWidget(
-                      store.themeIndex == 0 ? Colors.blue : Colors.grey[600],
+                      setStore.themeIndex == 0 ? setStore.theme.primary : setStore.theme.background,
                       () {
-                        store.setThemeIndex(0);
+                        setStore.setThemeIndex(0);
                       },
                       LinearGradient(
                         stops: [0.3, 1.0],
@@ -56,9 +56,9 @@ class SettingsBody extends StatelessWidget {
                       ),
                     ),
                     RadioWidget(
-                      store.themeIndex == 1 ? Colors.blue : Colors.grey[600],
+                      setStore.themeIndex == 1 ? setStore.theme.primary : setStore.theme.background,
                       () {
-                        store.setThemeIndex(1);
+                        setStore.setThemeIndex(1);
                       },
                       LinearGradient(
                         colors: [
@@ -68,9 +68,9 @@ class SettingsBody extends StatelessWidget {
                       ),
                     ),
                     RadioWidget(
-                      store.themeIndex == 2 ? Colors.blue : Colors.grey[600],
+                      setStore.themeIndex == 2 ? setStore.theme.primary : setStore.theme.background,
                       () {
-                        store.setThemeIndex(2);
+                        setStore.setThemeIndex(2);
                       },
                       LinearGradient(
                         stops: [0.2, 1.0],
@@ -81,9 +81,9 @@ class SettingsBody extends StatelessWidget {
                       ),
                     ),
                     RadioWidget(
-                      store.themeIndex == 3 ? Colors.blue : Colors.grey[600],
+                      setStore.themeIndex == 3 ? setStore.theme.primary : setStore.theme.background,
                       () {
-                        store.setThemeIndex(3);
+                        setStore.setThemeIndex(3);
                       },
                       LinearGradient(
                         stops: [0.2, 1.0],
@@ -94,9 +94,9 @@ class SettingsBody extends StatelessWidget {
                       ),
                     ),
                     RadioWidget(
-                      store.themeIndex == 4 ? Colors.blue : Colors.grey[600],
+                      setStore.themeIndex == 4 ? setStore.theme.primary : setStore.theme.background,
                       () {
-                        store.setThemeIndex(4);
+                        setStore.setThemeIndex(4);
                       },
                       LinearGradient(
                         stops: [0.2, 1.0],
@@ -107,9 +107,9 @@ class SettingsBody extends StatelessWidget {
                       ),
                     ),
                     RadioWidget(
-                      store.themeIndex == 5 ? Colors.blue : Colors.grey[600],
+                      setStore.themeIndex == 5 ? setStore.theme.primary : setStore.theme.background,
                       () {
-                        store.setThemeIndex(5);
+                        setStore.setThemeIndex(5);
                       },
                       LinearGradient(
                         stops: [0.2, 1.0],

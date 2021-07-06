@@ -20,7 +20,7 @@ class EmptyList extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icons, size: 100),
+          Icon(icons, size: 100,),
           Wrap(
             children: [
               Text(

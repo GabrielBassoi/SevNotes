@@ -4,9 +4,11 @@ import 'package:get_it/get_it.dart';
 import 'package:sevnotes2/App/home/tabs/empty_list.dart';
 import 'package:sevnotes2/App/home/widgets/note_card.dart';
 import 'package:sevnotes2/stores/home_store.dart';
+import 'package:sevnotes2/stores/settings_store.dart';
 
 class WhitelistTab extends StatelessWidget {
   final HomeStore store = GetIt.I<HomeStore>();
+  final SettingsStore setStore = GetIt.I<SettingsStore>();
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,7 @@ class WhitelistTab extends StatelessWidget {
                 margin: const EdgeInsets.all(13),
                 child: NoteCard(
                   store.notesList[ind[index]],
+                  setStore,
                 ),
               );
             },

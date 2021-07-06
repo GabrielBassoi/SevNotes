@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 import 'package:sevnotes2/App/EditNote/edit_note.dart';
 import 'package:sevnotes2/stores/home_store.dart';
+import 'package:sevnotes2/stores/settings_store.dart';
 
 import 'widgets/bar/bar.dart';
 import 'widgets/bar/tab_view.dart';
@@ -20,6 +21,7 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
 
   final HomeStore store = GetIt.I<HomeStore>();
   ReactionDisposer disposer;
+  final SettingsStore setStore = GetIt.I<SettingsStore>();
 
   @override
   void initState() {
@@ -65,27 +67,28 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      color: setStore.theme.background,
       child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
-            child: ToolBar(),
+            child: ToolBar(setStore),
           ),
           SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.only(bottom: 15, left: 15, right: 15),
-            child: BarTab(tabController),
+            child: BarTab(tabController, setStore),
           ),
           Observer(builder: (_) {
             return Expanded(
               child: Scaffold(
+                backgroundColor: setStore.theme.background,
                 body: TabView(tabController),
                 floatingActionButton: store.tabIndex != 0
                     ? null
                     : FloatingActionButton(
-                        backgroundColor: Colors.grey,
-                        child: Icon(Icons.add, color: Colors.black),
+                        backgroundColor: setStore.theme.layout,
+                        child: Icon(Icons.add, color: setStore.theme.primary),
                         onPressed: () {
                           Navigator.of(context).push(
                               MaterialPageRoute(builder: (_) => EditNote()));

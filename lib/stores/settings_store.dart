@@ -7,10 +7,10 @@ class SettingsStore = _SettingsStoreBase with _$SettingsStore;
 
 abstract class _SettingsStoreBase with Store {
   @observable
-  int themeIndex;
+  int themeIndex = 0;
 
   @observable
-  MyTheme theme;
+  MyTheme theme = Themes.light;
 
   @action
   void setThemeIndex(int value) {

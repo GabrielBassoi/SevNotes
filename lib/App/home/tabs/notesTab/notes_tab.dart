@@ -1,9 +1,9 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:sevnotes2/App/home/widgets/note_card.dart';
 import 'package:sevnotes2/stores/home_store.dart';
+import 'package:sevnotes2/stores/settings_store.dart';
 import '../empty_list.dart';
 
 class NotesTab extends StatefulWidget {
@@ -15,6 +15,7 @@ class NotesTab extends StatefulWidget {
 
 class _NotesTabState extends State<NotesTab> {
   final HomeStore store = GetIt.I<HomeStore>();
+  final SettingsStore setStore = GetIt.I<SettingsStore>();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class _NotesTabState extends State<NotesTab> {
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 margin: const EdgeInsets.all(13),
-                child: NoteCard(store.notesList[index]),
+                child: NoteCard(store.notesList[index], setStore),
               );
             },
           );

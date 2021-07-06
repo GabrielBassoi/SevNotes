@@ -25,10 +25,11 @@ class EditNote extends StatelessWidget {
     }
     return Container(
       child: Scaffold(
+        backgroundColor: setStore.theme.background,
         appBar: EditNoteAppBarWidget(store, context, setStore),
         body: Container(
           padding: const EdgeInsets.all(15),
-          child: EditNoteBodyWidget(store: store),
+          child: EditNoteBodyWidget(store: store, setStore: setStore,),
         ),
       ),
     );

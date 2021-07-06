@@ -16,6 +16,7 @@ class EditNoteAppBarWidget extends PreferredSize {
       : super(
           preferredSize: Size.fromHeight(60),
           child: AppBar(
+            backgroundColor: setStore.theme.layout,
             toolbarHeight: 65,
             elevation: 0,
             shape: RoundedRectangleBorder(
@@ -48,7 +49,10 @@ class EditNoteAppBarWidget extends PreferredSize {
               },
               splashRadius: 20,
               iconSize: 25,
-              icon: Icon(Icons.keyboard_arrow_left, color: setStore.theme.primary,),
+              icon: Icon(
+                Icons.keyboard_arrow_left,
+                color: setStore.theme.primary,
+              ),
             ),
             actions: [
               Observer(builder: (_) {
@@ -59,8 +63,14 @@ class EditNoteAppBarWidget extends PreferredSize {
                   onPressed: store.setFavorite,
                   iconSize: 25,
                   icon: store.isFavorite
-                      ? Icon(Icons.star)
-                      : Icon(Icons.star_border),
+                      ? Icon(
+                          Icons.star,
+                          color: setStore.theme.primary,
+                        )
+                      : Icon(
+                          Icons.star_border,
+                          color: setStore.theme.primary,
+                        ),
                 );
               }),
               SizedBox(width: 11),
@@ -74,7 +84,7 @@ class EditNoteAppBarWidget extends PreferredSize {
                       }
                     : null,
                 iconSize: 25,
-                icon: Icon(Icons.delete),
+                icon: Icon(Icons.delete, color: setStore.theme.primary,),
               ),
               SizedBox(width: 11),
             ],
