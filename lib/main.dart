@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 import 'package:sevnotes2/data/data_to-do.dart';
+import 'package:sevnotes2/data/theme_shared.dart';
 import 'package:sevnotes2/stores/home_store.dart';
 import 'package:sevnotes2/stores/todo_store.dart';
 
@@ -12,12 +13,14 @@ import 'stores/settings_store.dart';
 
 final HomeStore storeHome = GetIt.I<HomeStore>();
 final TodoStore todoStore = GetIt.I<TodoStore>();
+final SettingsStore setStore = GetIt.I<SettingsStore>();
+final ThemeShared shared = ThemeShared();
+
 void main() async {
   setupLocates();
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
-  storeHome.setSearchText("");
   await ini();
 }
 
@@ -45,6 +48,8 @@ class _MyAppState extends State<MyApp> {
 }
 
 Future<void> ini() async {
+  storeHome.setSearchText("");
+
   await Data().readData().then((value) {
     if (value != null) {
       storeHome.primaryList = value.asObservable();
@@ -55,5 +60,8 @@ Future<void> ini() async {
       todoStore.todoList = list.asObservable();
     }
   });
+
   storeHome.search();
+  
+  await shared.loadTheme().then((value) => setStore.setThemeIndex(value));
 }
