@@ -28,7 +28,7 @@ class TodoRow extends StatelessWidget {
       background: Container(
         padding: const EdgeInsets.only(left: 5),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(15),
           color: Colors.red,
         ),
         child:

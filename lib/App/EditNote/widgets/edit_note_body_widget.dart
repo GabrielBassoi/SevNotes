@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sevnotes2/stores/edit_note_store.dart';
 import 'package:sevnotes2/stores/settings_store.dart';
@@ -60,7 +59,7 @@ class EditNoteBodyWidget extends StatelessWidget {
                   counterText: "",
                   hintText: "Text",
                   hintStyle:
-                      GoogleFonts.roboto(color: Colors.black.withAlpha(860)),
+                      GoogleFonts.roboto(color: setStore.theme.text.withAlpha(860)),
                 ),
               ),
             ),

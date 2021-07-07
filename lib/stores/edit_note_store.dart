@@ -50,7 +50,7 @@ abstract class _EditNoteStore with Store {
 
   @action
   void addData() {
-    store.primaryList.add(Note(
+    store.primaryList.insert(0, Note(
       title: title,
       body: body,
       isFavorite: isFavorite,

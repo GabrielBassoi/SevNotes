@@ -39,7 +39,6 @@ class WhitelistTab extends StatelessWidget {
       } else {
         return Container(
           child: GridView.builder(
-            reverse: true,
             gridDelegate: gridDelegate,
             itemCount: i,
             itemBuilder: (BuildContext context, int index) {
