@@ -1,3 +1,4 @@
+import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
@@ -42,11 +43,16 @@ class WhitelistTab extends StatelessWidget {
             gridDelegate: gridDelegate,
             itemCount: i,
             itemBuilder: (BuildContext context, int index) {
-              return Container(
-                margin: const EdgeInsets.all(13),
-                child: NoteCard(
-                  store.notesList[ind[index]],
-                  setStore,
+              return AnimatedCard(
+                direction: index.isOdd
+                    ? AnimatedCardDirection.right
+                    : AnimatedCardDirection.left,
+                child: Container(
+                  margin: const EdgeInsets.all(13),
+                  child: NoteCard(
+                    store.notesList[ind[index]],
+                    setStore,
+                  ),
                 ),
               );
             },

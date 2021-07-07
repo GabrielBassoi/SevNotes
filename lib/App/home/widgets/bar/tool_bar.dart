@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:animated_card/animated_card.dart';
 import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:sevnotes2/App/Settings/settings_screen.dart';
@@ -50,37 +51,45 @@ class _ToolBarState extends State<ToolBar> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Container(
-            height: 70,
-            width: size.width * 0.58,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: widget.setStore.theme.layout,
-            ),
-            child: Material(
-              color: Colors.transparent,
-              child: Stack(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (_) => SettingsScreen()));
-                    },
-                    child: Hero(
-                        tag: "settings",
-                        child: Container(
-                          padding: const EdgeInsets.all(10),
-                          child: Icon(Icons.settings, color: widget.setStore.theme.primary,),
-                        )),
-                  ),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: SearchWidget(widget.setStore),
-                  )
-                ],
+        AnimatedCard(
+          direction: AnimatedCardDirection.left,
+          child: Container(
+              height: 70,
+              width: size.width * 0.58,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: widget.setStore.theme.layout,
               ),
-            )),
-        Container(
+              child: Material(
+                color: Colors.transparent,
+                child: Stack(
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => SettingsScreen()));
+                      },
+                      child: Hero(
+                          tag: "settings",
+                          child: Container(
+                            padding: const EdgeInsets.all(10),
+                            child: Icon(
+                              Icons.settings,
+                              color: widget.setStore.theme.primary,
+                            ),
+                          )),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: SearchWidget(widget.setStore),
+                    )
+                  ],
+                ),
+              )),
+        ),
+        AnimatedCard(
+          direction: AnimatedCardDirection.top,
+          child: Container(
             padding: const EdgeInsets.all(11),
             height: 70,
             width: size.width * 0.3,
@@ -108,9 +117,11 @@ class _ToolBarState extends State<ToolBar> {
                     fontFamily: "Roboto",
                     decoration: TextDecoration.none,
                   ),
-                )
+                ),
               ],
-            )),
+            ),
+          ),
+        ),
       ],
     );
   }

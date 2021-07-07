@@ -1,3 +1,4 @@
+import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
@@ -32,7 +33,11 @@ class TodoTab extends StatelessWidget {
                     if (index == store.todoList.length) {
                       return AddTodo(setStore);
                     }
-                    return TodoRow(store.todoList[index], index, setStore);
+                    return AnimatedCard(
+                      direction: AnimatedCardDirection.left,
+                      initDelay: Duration(milliseconds: index * 80),
+                      child: TodoRow(store.todoList[index], index, setStore),
+                    );
                   },
                 );
               },
