@@ -21,11 +21,11 @@ class DataTodo {
     try {
       final file = await getFile();
       var data = json.decode(await file.readAsString());
-      List list = data.map((todo) => Todo.fromJson(todo)).toList();
+      List<Todo> list = data.map<Todo>((todo) => Todo.fromJson(todo)).toList();
       return list;
     } catch (e) {
       print(e);
-      return null;
+      return [];
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,12 +11,17 @@ Future showDialogWidget(BuildContext context, EditNoteStore store) async {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          elevation: 0,
           backgroundColor: setStore.theme.layout,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          title: Text(
-            "Do you like to delete this note?",
-            style: GoogleFonts.roboto(fontWeight: FontWeight.bold, color: setStore.theme.text),
+          title: AnimatedCard(
+            direction: AnimatedCardDirection.top,
+            child: Text(
+              "Do you like to delete this note?",
+              style: GoogleFonts.roboto(
+                  fontWeight: FontWeight.bold, color: setStore.theme.text),
+            ),
           ),
           actions: [
             TextButton(
@@ -26,14 +32,16 @@ Future showDialogWidget(BuildContext context, EditNoteStore store) async {
               },
               child: Text(
                 "Yes",
-                style: GoogleFonts.roboto(color: setStore.theme.text, fontSize: 16),
+                style: GoogleFonts.roboto(
+                    color: setStore.theme.text, fontSize: 16),
               ),
             ),
             TextButton(
               onPressed: Navigator.of(context).pop,
               child: Text(
                 "Noooo",
-                style: GoogleFonts.roboto(color: setStore.theme.text, fontSize: 16),
+                style: GoogleFonts.roboto(
+                    color: setStore.theme.text, fontSize: 16),
               ),
             ),
           ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
+import 'package:sevnotes2/App/splash/splash_screen.dart';
 import 'package:sevnotes2/data/data_to-do.dart';
 import 'package:sevnotes2/data/theme_shared.dart';
 import 'package:sevnotes2/stores/home_store.dart';
@@ -42,7 +43,11 @@ class _MyAppState extends State<MyApp> {
       title: 'SevNotes 2',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primaryColor: Colors.grey, fontFamily: "Roboto"),
-      home: HomeNoteScreen(),
+      initialRoute: "/splash",
+      routes: {
+        "/splash" : (context) => SplashScreen(),
+        "/home" : (context) => HomeNoteScreen(),
+      },
     );
   }
 }

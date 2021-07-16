@@ -1,6 +1,7 @@
-
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sevnotes2/stores/settings_store.dart';
 
 class EmptyList extends StatelessWidget {
   final String title;
@@ -13,6 +14,8 @@ class EmptyList extends StatelessWidget {
     @required this.icons,
   });
 
+  final SettingsStore setStore = GetIt.I<SettingsStore>();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,14 +23,21 @@ class EmptyList extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icons, size: 100,),
+          Icon(
+            icons,
+            size: 100,
+            color: setStore.theme.primary,
+          ),
           Wrap(
             children: [
               Text(
                 title,
                 textAlign: TextAlign.center,
                 style: GoogleFonts.roboto(
-                    fontSize: 20, fontWeight: FontWeight.w800),
+                  fontSize: 20,
+                  fontWeight: FontWeight.w800,
+                  color: setStore.theme.text,
+                ),
               )
             ],
           ),
@@ -38,7 +48,7 @@ class EmptyList extends StatelessWidget {
             children: [
               Text(
                 subTitle,
-                style: GoogleFonts.roboto(),
+                style: GoogleFonts.roboto(color: setStore.theme.clockDate),
                 textAlign: TextAlign.center,
               ),
             ],

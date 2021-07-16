@@ -5,7 +5,13 @@ class Note {
   bool isFavorite;
   String creationDate;
 
-  Note({this.title, this.body, this.isFavorite, this.creationDate, this.id});
+  Note({
+    this.title,
+    this.body,
+    this.isFavorite,
+    this.creationDate,
+    this.id,
+  });
 
   Note.fromJson(Map<String, dynamic> json)
       : id = json["id"],
