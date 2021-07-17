@@ -1,6 +1,6 @@
 # sevnotes2
 
-A new Flutter application.
+
 
 ## What is SevNotes?
 
@@ -16,4 +16,8 @@ I learned a lot with this project!
 - Searching
 - A Digital clock and a date
 
+[![Sevnotes rg][]]
+
+[SevNotes rg]: img/Rg-sevnotes.png
+[SevNotes rg link]: 
 
