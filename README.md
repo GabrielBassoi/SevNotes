@@ -60,6 +60,8 @@ SevNotes$ flutter run
 ---
 
 <h2 align="center">PlayStore   <img src="img/play-logo.png" width="20"/>
+  
+PlayStore link: [SevNotes](https://play.google.com/store/apps/details?id=bassoi.com.sevnotes2)
 
 ---
 
