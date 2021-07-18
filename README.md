@@ -58,6 +58,7 @@ SevNotes$ flutter run
 ```
 
 ---
+
 <h2 align="center">PlayStore   <img src="img/play-logo.png" width="20"/>
 
 ---
