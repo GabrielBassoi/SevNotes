@@ -88,7 +88,7 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
                     ? null
                     : FloatingActionButton(
                         backgroundColor: setStore.theme.layout,
-                        child: Icon(Icons.add, color: setStore.theme.primary),
+                        child: Icon(Icons.add, color: setStore.theme.primary, size: 27,),
                         onPressed: () {
                           Navigator.of(context).push(
                               MaterialPageRoute(builder: (_) => EditNote()));
