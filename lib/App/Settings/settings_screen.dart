@@ -31,7 +31,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Hero(
+      tag: "settings",
       child: Scaffold(
         backgroundColor: setStore.theme.background,
         appBar: SettingsAppBar(context, setStore),

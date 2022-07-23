@@ -11,7 +11,8 @@ import 'package:uuid/uuid.dart';
 class EditNote extends StatelessWidget {
   final Note? note;
   final bool edit;
-  EditNote({Key? key, this.note, this.edit = false}) : super(key: key);
+  final int index;
+  EditNote({Key? key, this.note, this.edit = false, this.index = -1}) : super(key: key);
 
   final EditNoteStore store = EditNoteStore();
   final SettingsStore setStore = GetIt.I<SettingsStore>();
@@ -23,15 +24,27 @@ class EditNote extends StatelessWidget {
     } else {
       store.setData(note!, edit);
     }
-    return Container(
-      child: Scaffold(
+    if (index == -1) {
+      return Scaffold(
         backgroundColor: setStore.theme.background,
         appBar: EditNoteAppBarWidget(store, context, setStore),
         body: Container(
           padding: const EdgeInsets.all(15),
           child: EditNoteBodyWidget(store: store, setStore: setStore),
         ),
-      ),
-    );
+      );
+    } else {
+      return Hero(
+        tag: index.toString(),
+        child: Scaffold(
+          backgroundColor: setStore.theme.background,
+          appBar: EditNoteAppBarWidget(store, context, setStore),
+          body: Container(
+            padding: const EdgeInsets.all(15),
+            child: EditNoteBodyWidget(store: store, setStore: setStore),
+          ),
+        ),
+      );
+    }
   }
 }

@@ -52,6 +52,7 @@ class WhitelistTab extends StatelessWidget {
                   child: NoteCard(
                     store.notesList[ind[index]],
                     setStore,
+                    index
                   ),
                 ),
               );

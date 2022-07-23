@@ -44,7 +44,7 @@ class NotesTab extends StatelessWidget {
                         : AnimatedCardDirection.left,
                     child: Container(
                       margin: const EdgeInsets.all(13),
-                      child: NoteCard(store.notesList[index], setStore),
+                      child: NoteCard(store.notesList[index], setStore, index),
                     ),
                   );
                 },

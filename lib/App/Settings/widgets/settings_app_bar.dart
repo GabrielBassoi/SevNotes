@@ -14,19 +14,16 @@ class SettingsAppBar extends PreferredSize {
             child: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0,
-              leading: Hero(
-                tag: "settings",
-                child: Material(
-                  color: Colors.transparent,
-                  child: IconButton(
-                    splashRadius: 20,
-                    icon: Icon(
-                      Icons.keyboard_arrow_left,
-                      color: setStore.theme.primary,
-                    ),
-                    onPressed: Navigator.of(context).pop,
-                    iconSize: 30,
+              leading: Material(
+                color: Colors.transparent,
+                child: IconButton(
+                  splashRadius: 20,
+                  icon: Icon(
+                    Icons.keyboard_arrow_left,
+                    color: setStore.theme.primary,
                   ),
+                  onPressed: Navigator.of(context).pop,
+                  iconSize: 30,
                 ),
               ),
               title: Text(
