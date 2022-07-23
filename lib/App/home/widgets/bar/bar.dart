@@ -1,5 +1,6 @@
 import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:sevnotes2/stores/settings_store.dart';
 
 class BarTab extends StatelessWidget {
@@ -13,30 +14,34 @@ class BarTab extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       elevation: 0,
-      child: AnimatedCard(
-        direction: AnimatedCardDirection.right,
-        child: Container(
-          height: 60,
-          decoration: BoxDecoration(
-            color: setStore.theme.layout,
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: TabBar(
-            controller: tabController,
-            indicatorColor: Colors.transparent,
-            indicatorPadding: EdgeInsets.symmetric(
-                horizontal: size.width * 0.03, vertical: 10),
-            indicator: BoxDecoration(
-              color: setStore.theme.background,
-              borderRadius: BorderRadius.circular(20),
+      child: Observer(
+        builder: (_) {
+          return AnimatedCard(
+            direction: AnimatedCardDirection.right,
+            child: Container(
+              height: 60,
+              decoration: BoxDecoration(
+                color: setStore.theme.layout,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: TabBar(
+                controller: tabController,
+                indicatorColor: Colors.transparent,
+                indicatorPadding: EdgeInsets.symmetric(
+                    horizontal: size.width * 0.03, vertical: 10),
+                indicator: BoxDecoration(
+                  color: setStore.theme.background,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                tabs: [
+                  tabb("Notes", Icons.article, setStore, 800),
+                  tabb("Whitelist", Icons.star, setStore, 850),
+                  tabb("To-do", Icons.done, setStore, 900),
+                ],
+              ),
             ),
-            tabs: [
-              tabb("Notes", Icons.article, setStore, 800),
-              tabb("Whitelist", Icons.star, setStore, 850),
-              tabb("To-do", Icons.done, setStore, 900),
-            ],
-          ),
-        ),
+          );
+        }
       ),
     );
   }

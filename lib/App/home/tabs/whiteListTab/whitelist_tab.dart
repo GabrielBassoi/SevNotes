@@ -25,13 +25,13 @@ class WhitelistTab extends StatelessWidget {
           ind.add(e);
         }
       }
-      if (i == 0 && store.searchText.isEmpty) {
+      if (i == 0 && store.searchText!.isEmpty) {
         return EmptyList(
             title: "Where is my favorites notes????",
             subTitle:
                 "Go to some note and click on the star to add your first favorite note",
             icons: Icons.favorite_border);
-      } else if (store.searchText.isNotEmpty && store.notesList.isEmpty) {
+      } else if (store.searchText!.isNotEmpty && store.notesList.isEmpty) {
         return EmptyList(
           title: "I didn't find anything!",
           subTitle: "Try to put something different",

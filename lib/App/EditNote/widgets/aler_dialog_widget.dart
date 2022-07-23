@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sevnotes2/stores/edit_note_store.dart';
+import 'package:sevnotes2/stores/home_store.dart';
 import 'package:sevnotes2/stores/settings_store.dart';
 
 Future showDialogWidget(BuildContext context, EditNoteStore store) async {

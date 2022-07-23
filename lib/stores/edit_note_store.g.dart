@@ -6,10 +6,10 @@ part of 'edit_note_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$EditNoteStore on _EditNoteStore, Store {
-  final _$idAtom = Atom(name: '_EditNoteStore.id');
+  late final _$idAtom = Atom(name: '_EditNoteStore.id', context: context);
 
   @override
   String get id {
@@ -24,7 +24,7 @@ mixin _$EditNoteStore on _EditNoteStore, Store {
     });
   }
 
-  final _$titleAtom = Atom(name: '_EditNoteStore.title');
+  late final _$titleAtom = Atom(name: '_EditNoteStore.title', context: context);
 
   @override
   String get title {
@@ -39,7 +39,7 @@ mixin _$EditNoteStore on _EditNoteStore, Store {
     });
   }
 
-  final _$bodyAtom = Atom(name: '_EditNoteStore.body');
+  late final _$bodyAtom = Atom(name: '_EditNoteStore.body', context: context);
 
   @override
   String get body {
@@ -54,7 +54,8 @@ mixin _$EditNoteStore on _EditNoteStore, Store {
     });
   }
 
-  final _$isFavoriteAtom = Atom(name: '_EditNoteStore.isFavorite');
+  late final _$isFavoriteAtom =
+      Atom(name: '_EditNoteStore.isFavorite', context: context);
 
   @override
   bool get isFavorite {
@@ -69,7 +70,7 @@ mixin _$EditNoteStore on _EditNoteStore, Store {
     });
   }
 
-  final _$editAtom = Atom(name: '_EditNoteStore.edit');
+  late final _$editAtom = Atom(name: '_EditNoteStore.edit', context: context);
 
   @override
   bool get edit {
@@ -84,7 +85,8 @@ mixin _$EditNoteStore on _EditNoteStore, Store {
     });
   }
 
-  final _$creationDateAtom = Atom(name: '_EditNoteStore.creationDate');
+  late final _$creationDateAtom =
+      Atom(name: '_EditNoteStore.creationDate', context: context);
 
   @override
   String get creationDate {
@@ -99,8 +101,8 @@ mixin _$EditNoteStore on _EditNoteStore, Store {
     });
   }
 
-  final _$_EditNoteStoreActionController =
-      ActionController(name: '_EditNoteStore');
+  late final _$_EditNoteStoreActionController =
+      ActionController(name: '_EditNoteStore', context: context);
 
   @override
   void setTitle(String value) {

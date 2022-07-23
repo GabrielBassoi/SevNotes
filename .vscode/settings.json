@@ -1,0 +1,22 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        ".dart_tool": true,
+        ".idea": true,
+        ".vscode": true,
+        "build": true,
+        "SECURITY.md": true,
+        "LICENSE": true,
+        "Eu-policy.md": true,
+        ".packages": true,
+        ".metadata": true,
+        ".flutter-plugins-dependencies": true,
+        ".flutter-plugins": true,
+        "pubspec.lock": true
+    }
+}

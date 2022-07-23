@@ -8,8 +8,7 @@ import 'package:sevnotes2/stores/settings_store.dart';
 class EditNoteBodyWidget extends StatelessWidget {
   final EditNoteStore store;
   final SettingsStore setStore;
-  const EditNoteBodyWidget({Key key, this.store, this.setStore})
-      : super(key: key);
+  const EditNoteBodyWidget({required this.store, required this.setStore});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class EditNoteBodyWidget extends StatelessWidget {
             child: Observer(builder: (_) {
               return AnimatedCard(
                 direction: AnimatedCardDirection.left,
-                initDelay: Duration(milliseconds: 800),
+                initDelay: const Duration(milliseconds: 800),
                 child: TextFormField(
                   onChanged: store.setTitle,
                   initialValue: store.title,
@@ -44,7 +43,7 @@ class EditNoteBodyWidget extends StatelessWidget {
               );
             }),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Flexible(
@@ -58,7 +57,7 @@ class EditNoteBodyWidget extends StatelessWidget {
               child: SingleChildScrollView(
                 child: AnimatedCard(
                   direction: AnimatedCardDirection.left,
-                  initDelay: Duration(milliseconds: 850),
+                  initDelay: const Duration(milliseconds: 850),
                   child: TextFormField(
                     onChanged: store.setBody,
                     initialValue: store.body,

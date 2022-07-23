@@ -9,9 +9,9 @@ class EmptyList extends StatelessWidget {
   final IconData icons;
 
   EmptyList({
-    @required this.title,
-    @required this.subTitle,
-    @required this.icons,
+    required this.title,
+    required this.subTitle,
+    required this.icons,
   });
 
   final SettingsStore setStore = GetIt.I<SettingsStore>();
@@ -41,9 +41,7 @@ class EmptyList extends StatelessWidget {
               )
             ],
           ),
-          SizedBox(
-            height: 10,
-          ),
+          const SizedBox(height: 10),
           Wrap(
             children: [
               Text(

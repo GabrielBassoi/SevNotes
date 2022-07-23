@@ -1,34 +1,33 @@
 name: sevnotes2
-description: A new Flutter application.
-publish_to: "none"
-version: 1.0.0+1
+description: A new Flutter project.
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.17.6 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  cupertino_icons: ^1.0.5
+  external_path: ^1.0.1
   animated_card: ^2.0.0
-  cupertino_icons: ^1.0.2
   date_time_format: ^2.0.1
-  ext_storage: ^1.0.3
-  flutter_mobx: ^2.0.0
-  get_it: ^7.1.3
-  google_fonts: ^2.0.0
-  mobx: ^2.0.1
-  path_provider: ^2.0.2
-  permission_handler: ^8.1.0
-  shared_preferences: ^2.0.6
-  uuid: ^3.0.4
+  flutter_mobx: ^2.0.6+1
+  get_it: ^7.2.0
+  google_fonts: ^3.0.1
+  mobx: ^2.0.7+4
+  path_provider: ^2.0.11
+  permission_handler: ^10.0.0
+  shared_preferences: ^2.0.15
+  uuid: ^3.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  build_runner: ^2.0.4
-  mobx_codegen: ^2.0.1+3
-  flutter_launcher_icons: ^0.9.0
+  flutter_lints: ^2.0.0
+  build_runner: ^2.2.0
+  mobx_codegen: ^2.0.7
+  flutter_launcher_icons: ^0.9.3
 
 flutter_icons:
   android: true

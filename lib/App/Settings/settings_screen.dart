@@ -12,7 +12,7 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   final SettingsStore setStore = GetIt.I<SettingsStore>();
-  ReactionDisposer disposer;
+  late ReactionDisposer disposer;
 
   @override
   void didChangeDependencies() {

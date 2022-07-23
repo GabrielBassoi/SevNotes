@@ -8,7 +8,7 @@ import 'package:sevnotes2/stores/settings_store.dart';
 import 'radio_widget.dart';
 
 class SettingsBody extends StatelessWidget {
-  SettingsBody({Key key}) : super(key: key);
+  SettingsBody();
 
   final SettingsStore setStore = GetIt.I<SettingsStore>();
 
@@ -49,7 +49,7 @@ class SettingsBody extends StatelessWidget {
                     children: [
                       RadioWidget(
                         0,
-                        LinearGradient(
+                        const LinearGradient(
                           stops: [0.3, 1.0],
                           colors: [
                             Color(0xFFA6A6A6),
@@ -60,7 +60,7 @@ class SettingsBody extends StatelessWidget {
                       ),
                       RadioWidget(
                         1,
-                        LinearGradient(
+                        const LinearGradient(
                           colors: [
                             Color(0xFF2E2E2E),
                             Colors.white,
@@ -70,7 +70,7 @@ class SettingsBody extends StatelessWidget {
                       ),
                       RadioWidget(
                         2,
-                        LinearGradient(
+                        const LinearGradient(
                           stops: [0.2, 1.0],
                           colors: [
                             Color(0xFF1D1D1D),
@@ -81,7 +81,7 @@ class SettingsBody extends StatelessWidget {
                       ),
                       RadioWidget(
                         3,
-                        LinearGradient(
+                        const LinearGradient(
                           stops: [0.2, 1.0],
                           colors: [
                             Color(0xFF2B3138),
@@ -92,7 +92,7 @@ class SettingsBody extends StatelessWidget {
                       ),
                       RadioWidget(
                         4,
-                        LinearGradient(
+                        const LinearGradient(
                           stops: [0.2, 1.0],
                           colors: [
                             Color(0xFF2E2E2E),
@@ -103,7 +103,7 @@ class SettingsBody extends StatelessWidget {
                       ),
                       RadioWidget(
                         5,
-                        LinearGradient(
+                        const LinearGradient(
                           stops: [0.2, 1.0],
                           colors: [
                             Color(0xFF2E2E2E),

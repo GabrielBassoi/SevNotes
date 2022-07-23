@@ -8,12 +8,11 @@ class ThemeShared {
     prefs.setInt("index", value);
   }
 
-  Future<int> loadTheme() async {
+  Future<int?> loadTheme() async {
     try {
       final SharedPreferences prefs = await _prefs;
       return prefs.getInt("index");
     } catch (e) {
-      print(e);
       return 0;
     }
   }

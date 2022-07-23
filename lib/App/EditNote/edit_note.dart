@@ -9,9 +9,9 @@ import 'package:sevnotes2/stores/settings_store.dart';
 import 'package:uuid/uuid.dart';
 
 class EditNote extends StatelessWidget {
-  final Note note;
+  final Note? note;
   final bool edit;
-  EditNote({this.note, this.edit = false});
+  EditNote({Key? key, this.note, this.edit = false}) : super(key: key);
 
   final EditNoteStore store = EditNoteStore();
   final SettingsStore setStore = GetIt.I<SettingsStore>();
@@ -19,9 +19,9 @@ class EditNote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (edit == false) {
-      store.setData(Note(title: "", body: "",isFavorite: false, creationDate: date(), id: Uuid().v1()), edit);
+      store.setData(Note(title: "", body: "",isFavorite: false, creationDate: date(), id: const Uuid().v1()), edit);
     } else {
-      store.setData(note, edit);
+      store.setData(note!, edit);
     }
     return Container(
       child: Scaffold(
@@ -29,7 +29,7 @@ class EditNote extends StatelessWidget {
         appBar: EditNoteAppBarWidget(store, context, setStore),
         body: Container(
           padding: const EdgeInsets.all(15),
-          child: EditNoteBodyWidget(store: store, setStore: setStore,),
+          child: EditNoteBodyWidget(store: store, setStore: setStore),
         ),
       ),
     );

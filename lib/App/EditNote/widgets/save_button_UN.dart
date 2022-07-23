@@ -1,14 +1,14 @@
 import 'dart:io';
 
+import 'package:external_path/external_path.dart';
 import 'package:flutter/material.dart';
-import 'package:ext_storage/ext_storage.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class SaveButton extends StatelessWidget {
   final String title;
   final String body;
 
-  const SaveButton({Key key, this.title, this.body}) : super(key: key);
+  const SaveButton({required Key key, required this.title, required this.body}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +33,8 @@ Future<void> requestPermission() async{
 }
 
 Future<void> makeFile(String title, String body) async {
-  String path = await ExtStorage.getExternalStoragePublicDirectory(
-      ExtStorage.DIRECTORY_DOWNLOADS);
+  String path = await ExternalPath.getExternalStoragePublicDirectory(
+      ExternalPath.DIRECTORY_DOWNLOADS);
   String filePath = "$path/$title.txt";
 
   File file = File(filePath);

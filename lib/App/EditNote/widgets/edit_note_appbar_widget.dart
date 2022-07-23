@@ -15,24 +15,24 @@ class EditNoteAppBarWidget extends PreferredSize {
   final SettingsStore setStore;
   EditNoteAppBarWidget(this.store, this.context, this.setStore)
       : super(
-          preferredSize: Size.fromHeight(60),
+          preferredSize: const Size.fromHeight(60),
           child: AnimatedCard(
             direction: AnimatedCardDirection.top,
             child: AppBar(
               backgroundColor: setStore.theme.layout,
               toolbarHeight: 65,
               elevation: 0,
-              shape: RoundedRectangleBorder(
+              shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(20),
                       bottomRight: Radius.circular(20))),
               title: AnimatedCard(
                 direction: AnimatedCardDirection.top,
-                initDelay: Duration(milliseconds: 800),
+                initDelay: const Duration(milliseconds: 800),
                 child: Observer(
                   builder: (_) {
                     return Text(
-                      "${store.creationDate}",
+                      store.creationDate,
                       style: GoogleFonts.roboto(
                         fontSize: 15,
                         color: setStore.theme.clockDate,
@@ -43,7 +43,7 @@ class EditNoteAppBarWidget extends PreferredSize {
               ),
               leading: IconButton(
                 padding: EdgeInsets.zero,
-                constraints: BoxConstraints(),
+                constraints: const BoxConstraints(),
                 onPressed: () {
                   if (store.edit == false) {
                     store.addData();
@@ -51,7 +51,7 @@ class EditNoteAppBarWidget extends PreferredSize {
                     store.saveData();
                   }
                   HomeStore homeStore = GetIt.I<HomeStore>();
-                  Data().saveData(homeStore.primaryList.toList());
+                  homeStore.saveData();
                   Navigator.of(context).pop();
                 },
                 splashRadius: 20,
@@ -84,19 +84,17 @@ class EditNoteAppBarWidget extends PreferredSize {
                     );
                   }),
                 ),
-                SizedBox(width: 11),
+                const SizedBox(width: 11),
                 AnimatedCard(
                   direction: AnimatedCardDirection.right,
-                  initDelay: Duration(milliseconds: 900),
+                  initDelay: const Duration(milliseconds: 900),
                   child: IconButton(
                     padding: EdgeInsets.zero,
-                    constraints: BoxConstraints(),
+                    constraints: const BoxConstraints(),
                     splashRadius: 20,
                     onPressed: store.edit
-                        ? () {
-                            showDialogWidget(context, store);
-                          }
-                        : null,
+                        ? (){showDialogWidget(context, store);}
+                        : (){Navigator.of(context).pop();},
                     iconSize: 25,
                     icon: Icon(
                       Icons.delete,
@@ -104,7 +102,7 @@ class EditNoteAppBarWidget extends PreferredSize {
                     ),
                   ),
                 ),
-                SizedBox(width: 11),
+                const SizedBox(width: 11),
               ],
             ),
           ),

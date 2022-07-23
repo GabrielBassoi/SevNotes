@@ -20,7 +20,6 @@ final ThemeShared shared = ThemeShared();
 void main() async {
   setupLocates();
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   runApp(MyApp());
   await ini();
 }
@@ -61,12 +60,10 @@ Future<void> ini() async {
     }
   });
   await DataTodo().readData().then((list) {
-    if (list != null) {
-      todoStore.todoList = list.asObservable();
-    }
+    todoStore.todoList = list.asObservable();
   });
 
   storeHome.search();
   
-  await shared.loadTheme().then((value) => setStore.setThemeIndex(value));
+  await shared.loadTheme().then((value) => setStore.setThemeIndex(value!));
 }

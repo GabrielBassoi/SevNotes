@@ -13,13 +13,13 @@ abstract class _TodoRowStore with Store {
   final TodoStore store = GetIt.I<TodoStore>();
 
   @observable
-  bool isCompleted;
+  bool isCompleted = false;
 
   @observable
-  String text;
+  String? text;
 
   @observable
-  int index;
+  int index = 0;
 
   @action
   void setData(Todo todo) {
@@ -29,7 +29,7 @@ abstract class _TodoRowStore with Store {
 
   @action
   void saveData() {
-    store.todoList[index].title = text;
+    store.todoList[index].title = text!;
     store.todoList[index].checked = isCompleted;
   }
 

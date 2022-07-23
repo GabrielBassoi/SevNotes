@@ -9,11 +9,11 @@ class MyTheme {
   final Color primary;
   
   MyTheme({
-    this.layout,
-    this.background,
-    this.text,
-    this.date,
-    this.clockDate,
-    this.primary,
+    required this.text,
+    required this.background,
+    required this.date,
+    required this.layout,
+    required this.clockDate,
+    required this.primary,
   });
 }

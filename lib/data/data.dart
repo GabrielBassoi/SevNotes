@@ -11,20 +11,20 @@ class Data {
   }
 
   Future saveData(List<Note> list) async {
+    print("================SAVE DATA===============");
     List listJSON = list.map((note) => note.toJson()).toList();
     var data = json.encode(listJSON);
     final file = await getFile();
     file.writeAsString(data);
   }
 
-  Future<List<Note>> readData() async {
+  Future<List<Note>?> readData() async {
     try {
       final file = await getFile();
       var data = json.decode(await file.readAsString());
       List<Note> list = data.map<Note>((note) => Note.fromJson(note)).toList();
       return list;
     } catch (e) {
-      print(e);
       return null;
     }
   }

@@ -28,9 +28,7 @@ class AddTodo extends StatelessWidget {
               size: 30,
               color: setStore.theme.primary,
             ),
-            SizedBox(
-              width: 8,
-            ),
+            const SizedBox(width: 8,),
             Text("Add a new Todo", style: GoogleFonts.roboto(fontSize: 16, color: setStore.theme.text)),
           ],
         ),

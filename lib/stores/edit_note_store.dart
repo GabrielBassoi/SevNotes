@@ -12,22 +12,22 @@ abstract class _EditNoteStore with Store {
   final HomeStore store = GetIt.I<HomeStore>();
 
   @observable
-  String id;
+  String id = "";
 
   @observable
-  String title;
+  String title = "";
 
   @observable
-  String body;
+  String body = "";
 
   @observable
-  bool isFavorite;
+  bool isFavorite = false;
 
   @observable
-  bool edit;
+  bool edit = false;
 
   @observable
-  String creationDate;
+  String creationDate = "";
 
   @action
   void setTitle(String value) => title = value;
@@ -72,7 +72,7 @@ abstract class _EditNoteStore with Store {
 
   @action
   void deleteData() {
-    store.primaryList.removeAt(index());
+    store.rm(index());
   }
 
   @action
@@ -83,7 +83,6 @@ abstract class _EditNoteStore with Store {
       }
       return false;
     }).toInt();
-    print("------------- $i --------------------");
     return i;
   }
 }

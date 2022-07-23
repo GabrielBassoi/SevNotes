@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 import 'package:sevnotes2/App/EditNote/edit_note.dart';
+import 'package:sevnotes2/models/note.dart';
 import 'package:sevnotes2/stores/home_store.dart';
 import 'package:sevnotes2/stores/settings_store.dart';
 
@@ -17,10 +18,10 @@ class HomeNoteScreen extends StatefulWidget {
 
 class _HomeNoteScreenState extends State<HomeNoteScreen>
     with SingleTickerProviderStateMixin {
-  TabController tabController;
+  late TabController tabController;
 
   final HomeStore store = GetIt.I<HomeStore>();
-  ReactionDisposer disposer;
+  late ReactionDisposer disposer;
   final SettingsStore setStore = GetIt.I<SettingsStore>();
 
   @override
@@ -37,19 +38,17 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
 
     disposer = autorun(
       (_) {
-        if (store.searchText == "" ||
-            store.searchText.isEmpty ||
-            store.searchText == null) {
+        if (store.searchText == "" || store.searchText!.isEmpty) {
           store.setNotesList(store.primaryList);
         } else {
-          List l = store.primaryList
+          List<Note> l = store.primaryList
               .where((note) =>
                   note.title
                       .toLowerCase()
-                      .contains(store.searchText.toLowerCase()) ||
+                      .contains(store.searchText!.toLowerCase()) ||
                   note.body
                       .toLowerCase()
-                      .contains(store.searchText.toLowerCase()))
+                      .contains(store.searchText!.toLowerCase()))
               .toList();
           store.setNotesList(l);
         }
@@ -66,27 +65,30 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: setStore.theme.background,
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
-            child: ToolBar(setStore),
-          ),
-          SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 15, left: 15, right: 15),
-            child: BarTab(tabController, setStore),
-          ),
-          Observer(builder: (_) {
-            return Expanded(
-              child: Scaffold(
-                backgroundColor: setStore.theme.background,
-                body: TabView(tabController),
-                floatingActionButton: store.tabIndex != 0
-                    ? null
-                    : FloatingActionButton(
+    return SafeArea(
+      child: Observer(
+        builder: (_) {
+          return Container(
+            color: setStore.theme.background,
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+                  child: ToolBar(setStore),
+                ),
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 15, left: 15, right: 15),
+                  child: BarTab(tabController, setStore),
+                ),
+                Observer(builder: (_) {
+                  return Expanded(
+                    child: Scaffold(
+                      backgroundColor: setStore.theme.background,
+                      body: TabView(tabController),
+                      floatingActionButton: store.tabIndex != 0
+                          ? null
+                          : FloatingActionButton(
                         backgroundColor: setStore.theme.layout,
                         child: Icon(Icons.add, color: setStore.theme.primary),
                         onPressed: () {
@@ -94,10 +96,13 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
                               MaterialPageRoute(builder: (_) => EditNote()));
                         },
                       ),
-              ),
-            );
-          }),
-        ],
+                    ),
+                  );
+                }),
+              ],
+            ),
+          );
+        }
       ),
     );
   }

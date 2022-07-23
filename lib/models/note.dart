@@ -6,11 +6,11 @@ class Note {
   String creationDate;
 
   Note({
-    this.title,
-    this.body,
-    this.isFavorite,
-    this.creationDate,
-    this.id,
+    required this.title,
+    required this.body,
+    required this.isFavorite,
+    required this.creationDate,
+    required this.id,
   });
 
   Note.fromJson(Map<String, dynamic> json)

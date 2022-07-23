@@ -33,7 +33,7 @@ class _SearchWidgetState extends State<SearchWidget> {
     final size = MediaQuery.of(context).size;
     return AnimatedContainer(
       duration: Duration(microseconds: 400),
-      width: store.folded ? size.width * 0.55 : 40,
+      width: store.folded! ? size.width * 0.55 : 40,
       height: 40,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
@@ -43,7 +43,7 @@ class _SearchWidgetState extends State<SearchWidget> {
           return Row(
             children: [
               Expanded(
-                child: store.folded
+                child: store.folded!
                     ? Padding(
                         padding: const EdgeInsets.only(bottom: 3.5),
                         child: TextField(
@@ -71,7 +71,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                 child: IconButton(
                   splashRadius: 20,
                   icon: Icon(
-                    store.folded ? Icons.chevron_right : Icons.search,
+                    store.folded! ? Icons.chevron_right : Icons.search,
                     color: widget.setStore.theme.primary,
                   ),
                   onPressed: () {
