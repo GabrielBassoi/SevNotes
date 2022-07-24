@@ -13,7 +13,7 @@ class TodoRow extends StatelessWidget {
   final TodoStore todoStore = GetIt.I<TodoStore>();
   final SettingsStore setStore;
 
-  TodoRow(this.td, this.index, this.setStore);
+  TodoRow(this.td, this.index, this.setStore, {Key? key}) : super(key: key);
 
   final Todo td;
   final int index;
@@ -40,49 +40,53 @@ class TodoRow extends StatelessWidget {
         DataTodo().saveData(todoStore.todoList.toList());
       },
       child: Observer(builder: (_) {
-        return Row(
-          children: [
-            Theme(
-              data: Theme.of(context)
-                  .copyWith(unselectedWidgetColor: setStore.theme.background),
-              child: Checkbox(
-                value: store.isCompleted,
-                materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                activeColor: setStore.theme.primary,
-                checkColor: setStore.theme.background,
-                onChanged: (value) {
-                  store.setCompleted(value!);
-                  store.saveData();
-                  DataTodo().saveData(todoStore.todoList.toList());
-                },
-              ),
+        return ListTile(
+          visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+          contentPadding: EdgeInsets.zero,
+          horizontalTitleGap: 10,
+          minVerticalPadding: 0,
+          tileColor: setStore.theme.layout,
+          leading: Theme(
+            data: Theme.of(context).copyWith(unselectedWidgetColor: setStore.theme.background),
+            child: Checkbox(
+             value: store.isCompleted,
+             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+             activeColor: setStore.theme.primary,
+             checkColor: setStore.theme.background,
+             onChanged: (value) {
+               store.setCompleted(value!);
+               store.saveData();
+               DataTodo().saveData(todoStore.todoList.toList());
+             },
             ),
-            Flexible(
-              child: TextFormField(
-                initialValue: store.text,
-                maxLines: null,
-                style: GoogleFonts.roboto(
-                  decoration:
-                  store.isCompleted ? TextDecoration.lineThrough : null,
-                  color: store.isCompleted
-                      ? setStore.theme.text.withAlpha(200)
-                      : setStore.theme.text,
-                ),
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.zero,
-                  hintText: "Your To-do",
-                  hintStyle: GoogleFonts.roboto(
-                      color: setStore.theme.text, fontSize: 13)
-                ),
-                onChanged: (e) {
-                  store.setText(e);
-                  store.saveData();
-                  DataTodo().saveData(todoStore.todoList.toList());
-                },
-              ),
-            )
-          ],
+           ),
+          title: TextFormField(
+            initialValue: store.text,
+            maxLines: null,
+            style: GoogleFonts.roboto(
+              decoration:
+              store.isCompleted ? TextDecoration.lineThrough : null,
+              color: store.isCompleted
+                  ? setStore.theme.text.withAlpha(200)
+                  : setStore.theme.text,
+            ),
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.zero,
+                hintText: "Your To-do",
+                hintStyle: GoogleFonts.roboto(
+                    color: setStore.theme.text, fontSize: 13)
+            ),
+            onChanged: (e) {
+              store.setText(e);
+              store.saveData();
+              DataTodo().saveData(todoStore.todoList.toList());
+            },
+          ),
+          trailing: ReorderableDragStartListener(
+            index: index,
+            child: Icon(Icons.drag_handle, color: setStore.theme.primary,)
+          ),
         );
       }),
     );
