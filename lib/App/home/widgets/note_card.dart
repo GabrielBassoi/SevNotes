@@ -47,12 +47,13 @@ class NoteCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 5),
                 Expanded(
-                    child: Text(
-                  note.body,
-                  maxLines: 6,
-                  style: GoogleFonts.roboto(
-                      fontSize: 12, color: setStore.theme.text),
-                )),
+                  child: Text(
+                    note.body,
+                    maxLines: 6,
+                    style: GoogleFonts.roboto(
+                        fontSize: 12, color: setStore.theme.text),
+                  )
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.end,
@@ -63,10 +64,7 @@ class NoteCard extends StatelessWidget {
                           fontSize: 11, color: setStore.theme.clockDate),
                     ),
                     note.isFavorite == true
-                        ? const Icon(
-                            Icons.star,
-                            color: Color.fromARGB(255, 218, 165, 32),
-                          )
+                        ? const Icon(Icons.star, color: Color.fromARGB(255, 218, 165, 32),)
                         : Container(),
                   ],
                 )

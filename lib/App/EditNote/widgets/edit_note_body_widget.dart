@@ -10,6 +10,23 @@ class EditNoteBodyWidget extends StatelessWidget {
   final SettingsStore setStore;
   const EditNoteBodyWidget({required this.store, required this.setStore});
 
+  Widget form(newV, initV, hint,{maxL = null, maxLines = null}) {
+    return TextFormField(
+      onChanged: newV,
+      initialValue: initV,
+      maxLines: maxLines,
+      maxLength: maxL,
+      style: GoogleFonts.roboto(color: setStore.theme.text),
+      decoration: InputDecoration(
+        border: InputBorder.none,
+        counterText: "",
+        hintText: hint,
+        hintStyle: GoogleFonts.roboto(
+            color: setStore.theme.text.withAlpha(860)),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnimatedCard(
@@ -26,30 +43,14 @@ class EditNoteBodyWidget extends StatelessWidget {
               return AnimatedCard(
                 direction: AnimatedCardDirection.left,
                 initDelay: const Duration(milliseconds: 800),
-                child: TextFormField(
-                  onChanged: store.setTitle,
-                  initialValue: store.title,
-                  maxLength: 50,
-                  maxLines: 1,
-                  style: GoogleFonts.roboto(color: setStore.theme.text),
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    counterText: "",
-                    hintText: "Title",
-                    hintStyle: GoogleFonts.roboto(
-                        color: setStore.theme.text.withAlpha(860)),
-                  ),
-                ),
+                child: form(store.setTitle, store.title, "Title", maxL: 50, maxLines: 1),
               );
             }),
           ),
-          const SizedBox(
-            height: 15,
-          ),
+          const SizedBox(height: 15,),
           Flexible(
             child: Container(
-              padding:
-                  const EdgeInsets.only(left: 15, right: 15, top: 5, bottom: 5),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
               decoration: BoxDecoration(
                 color: setStore.theme.layout,
                 borderRadius: BorderRadius.circular(20),
@@ -58,19 +59,7 @@ class EditNoteBodyWidget extends StatelessWidget {
                 child: AnimatedCard(
                   direction: AnimatedCardDirection.left,
                   initDelay: const Duration(milliseconds: 850),
-                  child: TextFormField(
-                    onChanged: store.setBody,
-                    initialValue: store.body,
-                    maxLines: null,
-                    style: GoogleFonts.roboto(color: setStore.theme.text),
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      counterText: "",
-                      hintText: "Text",
-                      hintStyle: GoogleFonts.roboto(
-                          color: setStore.theme.text.withAlpha(860)),
-                    ),
-                  ),
+                  child: form(store.setBody, store.body, "Text"),
                 ),
               ),
             ),

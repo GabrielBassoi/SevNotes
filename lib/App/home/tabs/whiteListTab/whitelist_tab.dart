@@ -38,26 +38,24 @@ class WhitelistTab extends StatelessWidget {
           icons: Icons.search,
         );
       } else {
-        return Container(
-          child: GridView.builder(
-            gridDelegate: gridDelegate,
-            itemCount: i,
-            itemBuilder: (BuildContext context, int index) {
-              return AnimatedCard(
-                direction: index.isOdd
-                    ? AnimatedCardDirection.right
-                    : AnimatedCardDirection.left,
-                child: Container(
-                  margin: const EdgeInsets.all(13),
-                  child: NoteCard(
-                    store.notesList[ind[index]],
-                    setStore,
-                    index
-                  ),
+        return GridView.builder(
+          gridDelegate: gridDelegate,
+          itemCount: i,
+          itemBuilder: (BuildContext context, int index) {
+            return AnimatedCard(
+              direction: index.isOdd
+                  ? AnimatedCardDirection.right
+                  : AnimatedCardDirection.left,
+              child: Container(
+                margin: const EdgeInsets.all(13),
+                child: NoteCard(
+                  store.notesList[ind[index]],
+                  setStore,
+                  index
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         );
       }
     });

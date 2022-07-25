@@ -11,7 +11,6 @@ class Data {
   }
 
   Future saveData(List<Note> list) async {
-    print("================SAVE DATA===============");
     List listJSON = list.map((note) => note.toJson()).toList();
     var data = json.encode(listJSON);
     final file = await getFile();

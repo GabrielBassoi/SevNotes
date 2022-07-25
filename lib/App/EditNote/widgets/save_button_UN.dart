@@ -2,13 +2,16 @@ import 'dart:io';
 
 import 'package:external_path/external_path.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:sevnotes2/stores/settings_store.dart';
 
 class SaveButton extends StatelessWidget {
   final String title;
   final String body;
+  SettingsStore store = GetIt.I<SettingsStore>();
 
-  const SaveButton({required Key key, required this.title, required this.body}) : super(key: key);
+  SaveButton({required this.title, required this.body});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class SaveButton extends StatelessWidget {
       },
       iconSize: 25,
       splashRadius: 20,
-      icon: Icon(Icons.save_alt),
+      icon: Icon(Icons.save_alt, color: store.theme.primary),
     );
   }
 }

@@ -9,11 +9,7 @@ class RadioWidget extends StatelessWidget {
   final LinearGradient gradient;
   final int duration;
 
-  RadioWidget(
-    this.index,
-    this.gradient,
-    this.duration,
-  );
+  RadioWidget(this.index, this.gradient, this.duration,);
 
   final ThemeShared shared = ThemeShared();
   final SettingsStore setStore = GetIt.I<SettingsStore>();

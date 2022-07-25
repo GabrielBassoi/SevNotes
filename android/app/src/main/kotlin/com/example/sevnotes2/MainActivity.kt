@@ -1,4 +1,4 @@
-package com.example.sevnotes2
+package bassoi.com.sevnotes2
 
 import io.flutter.embedding.android.FlutterActivity
 

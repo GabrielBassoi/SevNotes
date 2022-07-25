@@ -11,7 +11,7 @@ class TabView extends StatelessWidget {
   Widget build(BuildContext context) {
     return TabBarView(
       controller: tabController,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       children: [
         NotesTab(),
         WhitelistTab(),

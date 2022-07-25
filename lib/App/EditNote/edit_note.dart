@@ -12,38 +12,44 @@ class EditNote extends StatelessWidget {
   final Note? note;
   final bool edit;
   final int index;
+
   EditNote({Key? key, this.note, this.edit = false, this.index = -1}) : super(key: key);
 
   final EditNoteStore store = EditNoteStore();
   final SettingsStore setStore = GetIt.I<SettingsStore>();
 
-  @override
-  Widget build(BuildContext context) {
+  void startData() {
     if (edit == false) {
       store.setData(Note(title: "", body: "",isFavorite: false, creationDate: date(), id: const Uuid().v1()), edit);
     } else {
       store.setData(note!, edit);
     }
+  }
+
+  Widget editNoteTab(context) {
+    return Scaffold(
+      backgroundColor: setStore.theme.background,
+      appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(60),
+          child: EditNoteAppBarWidget(store: store, context: context, setStore: setStore,)
+      ),
+      body: Container(
+        padding: const EdgeInsets.all(15),
+        child: EditNoteBodyWidget(store: store, setStore: setStore),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    startData();
+
     if (index == -1) {
-      return Scaffold(
-        backgroundColor: setStore.theme.background,
-        appBar: EditNoteAppBarWidget(store, context, setStore),
-        body: Container(
-          padding: const EdgeInsets.all(15),
-          child: EditNoteBodyWidget(store: store, setStore: setStore),
-        ),
-      );
+      return editNoteTab(context);
     } else {
       return Hero(
         tag: index.toString(),
-        child: Scaffold(
-          backgroundColor: setStore.theme.background,
-          appBar: EditNoteAppBarWidget(store, context, setStore),
-          body: Container(
-            padding: const EdgeInsets.all(15),
-            child: EditNoteBodyWidget(store: store, setStore: setStore),
-          ),
-        ),
+        child: editNoteTab(context),
       );
     }
   }

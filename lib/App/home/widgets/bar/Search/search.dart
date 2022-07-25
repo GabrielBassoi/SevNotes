@@ -8,6 +8,7 @@ import 'package:sevnotes2/stores/settings_store.dart';
 class SearchWidget extends StatefulWidget {
   final SettingsStore setStore;
   SearchWidget(this.setStore);
+
   @override
   _SearchWidgetState createState() => _SearchWidgetState();
 }
@@ -31,8 +32,10 @@ class _SearchWidgetState extends State<SearchWidget> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    const duration = Duration(microseconds: 400);
+
     return AnimatedContainer(
-      duration: Duration(microseconds: 400),
+      duration: duration,
       width: store.folded! ? size.width * 0.55 : 40,
       height: 40,
       decoration: BoxDecoration(
@@ -66,7 +69,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                       ),
               ),
               AnimatedContainer(
-                duration: Duration(microseconds: 400),
+                duration: duration,
                 width: 40,
                 child: IconButton(
                   splashRadius: 20,

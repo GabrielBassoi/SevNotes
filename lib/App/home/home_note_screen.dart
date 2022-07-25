@@ -41,14 +41,9 @@ class _HomeNoteScreenState extends State<HomeNoteScreen>
         if (store.searchText == "" || store.searchText!.isEmpty) {
           store.setNotesList(store.primaryList);
         } else {
-          List<Note> l = store.primaryList
-              .where((note) =>
-                  note.title
-                      .toLowerCase()
-                      .contains(store.searchText!.toLowerCase()) ||
-                  note.body
-                      .toLowerCase()
-                      .contains(store.searchText!.toLowerCase()))
+          List<Note> l = store.primaryList.where((note) =>
+                  note.title.toLowerCase().contains(store.searchText!.toLowerCase()) ||
+                  note.body.toLowerCase().contains(store.searchText!.toLowerCase()))
               .toList();
           store.setNotesList(l);
         }

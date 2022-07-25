@@ -29,23 +29,24 @@ class _ToolBarState extends State<ToolBar> {
     });
   }
 
+  Widget timeText(text, double fontSize, color) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: fontSize,
+        color: color,
+        fontFamily: "Roboto",
+        decoration: TextDecoration.none,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    List<String> month = [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "June",
-      "July",
-      "Aug",
-      "Sept",
-      "Oct",
-      "Nov",
-      "Dec",
+    List<String> month = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July",
+      "Aug", "Sept", "Oct", "Nov", "Dec",
     ];
 
     return Row(
@@ -100,23 +101,9 @@ class _ToolBarState extends State<ToolBar> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(
-                  "${time.format("H:i:s")}",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: widget.setStore.theme.primary,
-                    fontFamily: "Roboto",
-                    decoration: TextDecoration.none,
-                  ),
-                ),
-                Text(
-                  "${month[(time.month) - 1]} ${time.day}, ${time.year}",
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: widget.setStore.theme.clockDate,
-                    fontFamily: "Roboto",
-                    decoration: TextDecoration.none,
-                  ),
+                timeText("${time.format("H:i:s")}", 20, widget.setStore.theme.primary),
+                timeText("${month[(time.month) - 1]} ${time.day}, ${time.year}",
+                    12, widget.setStore.theme.clockDate
                 ),
               ],
             ),
