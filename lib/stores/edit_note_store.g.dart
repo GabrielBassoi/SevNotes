@@ -101,8 +101,35 @@ mixin _$EditNoteStore on _EditNoteStore, Store {
     });
   }
 
+  late final _$deletedAtom =
+      Atom(name: '_EditNoteStore.deleted', context: context);
+
+  @override
+  bool get deleted {
+    _$deletedAtom.reportRead();
+    return super.deleted;
+  }
+
+  @override
+  set deleted(bool value) {
+    _$deletedAtom.reportWrite(value, super.deleted, () {
+      super.deleted = value;
+    });
+  }
+
   late final _$_EditNoteStoreActionController =
       ActionController(name: '_EditNoteStore', context: context);
+
+  @override
+  void setDeleted() {
+    final _$actionInfo = _$_EditNoteStoreActionController.startAction(
+        name: '_EditNoteStore.setDeleted');
+    try {
+      return super.setDeleted();
+    } finally {
+      _$_EditNoteStoreActionController.endAction(_$actionInfo);
+    }
+  }
 
   @override
   void setTitle(String value) {
@@ -200,7 +227,8 @@ title: ${title},
 body: ${body},
 isFavorite: ${isFavorite},
 edit: ${edit},
-creationDate: ${creationDate}
+creationDate: ${creationDate},
+deleted: ${deleted}
     ''';
   }
 }

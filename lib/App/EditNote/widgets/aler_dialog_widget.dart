@@ -32,6 +32,7 @@ Future showDialogWidget(BuildContext context, EditNoteStore store) async {
         actions: [
           TextButton(
             onPressed: () {
+              store.setDeleted();
               store.deleteData();
               Navigator.of(context).pop();
               Navigator.of(context).pop();
