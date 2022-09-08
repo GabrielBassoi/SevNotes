@@ -61,13 +61,6 @@ class EditNoteAppBarWidget extends StatelessWidget {
         leading: IconButton(
           padding: EdgeInsets.zero,
           onPressed: () {
-            if (store.edit == false) {
-              store.addData();
-            } else {
-              store.saveData();
-            }
-            HomeStore homeStore = GetIt.I<HomeStore>();
-            homeStore.saveData();
             Navigator.of(context).pop();
           },
           splashRadius: 20,
@@ -96,7 +89,8 @@ class EditNoteAppBarWidget extends StatelessWidget {
             direction: AnimatedCardDirection.right,
             initDelay: const Duration(milliseconds: 900),
             child: button(
-              store.edit ? (){showDialogWidget(context, store);} : (){Navigator.of(context).pop();},
+              store.edit ? (){showDialogWidget(context, store);} :
+                  (){Navigator.of(context).pop();store.setDeleted();},
               Icon(Icons.delete, color: setStore.theme.primary),
             ),
           ),

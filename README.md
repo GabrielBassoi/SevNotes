@@ -61,7 +61,7 @@ SevNotes$ flutter run
 
 <h2 align="center">PlayStore   <img src="img/play-logo.png" width="20"/> </h2>
 
-### PlayStore link: [SevNotes](Playlink)
+### PlayStore link: [SevNotes](https://play.google.com/store/apps/details?id=bassoi.com.sevnotes2)
 
 <img src="img/play-print.jpg" width="300"/>
 
@@ -73,4 +73,3 @@ SevNotes$ flutter run
 [SevNotes rg link]: https://github.com/GabrielBassoi/SevNotes-2/blob/master/img/Rg-sevnotes.png?raw=true
 
 [Play print]: img/play-print.jpg
-[Play link]: https://play.google.com/store/apps/details?id=bassoi.com.sevnotes2

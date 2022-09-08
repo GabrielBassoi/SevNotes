@@ -29,6 +29,12 @@ abstract class _EditNoteStore with Store {
   @observable
   String creationDate = "";
 
+  @observable
+  bool deleted = false;
+
+  @action
+  void setDeleted() => deleted = !deleted;
+
   @action
   void setTitle(String value) => title = value;
 
